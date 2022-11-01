@@ -16,6 +16,7 @@ body {
     background-color: rgba(36,36,36,0.8);
 }
 .logo {
+    margin-left: 20px;
     font-size: 48px;
     font-family: "AR BERKLEY";
     color: #ffeeee;
