@@ -1,0 +1,105 @@
+.title_banner_top{
+    text-align: center;
+}
+.top-title {
+    color: #ffeeee;
+    font-size: 36px;
+}
+.top-content {
+    margin: auto;
+    text-align: center;
+    background-color:rgba(255,255,255,0.8);
+    width: 90%;
+    margin-bottom: 30px;
+}
+.search {
+    background-color: #FFFFFF;
+    border-bottom: solid;
+    border-width: thin;
+}
+.search-text{
+    font-size: 32px;
+    color: #FF5D39;
+}
+.search-pin {
+    color: #FFFFFF;
+    font-size: 40px;
+}
+.search-img{
+    float: right;
+}
+.search_navi-name {
+    background-color: #EAA8BF;
+    float: left;
+    width: 30%;
+}
+.search_navi-tag {
+    background-color: #F9DFD5;
+    float: left;
+    width: 30%;
+}
+.search_navi-map {
+    background-color: #FEF7D5;
+    float: left;
+    width: 30%;
+}
+.search-name {
+    font-size: 40px;
+    color: #D45D87;
+}
+.search-tag {
+    font-size: 40px;
+    color: #E6855E;
+}
+.search-map {
+    font-size: 40px;
+    color: #F9DB57;
+}
+.Top-Store-Button {
+    margin-left: 50px;
+    font-size: 40px;
+    color: #FFFFFF;
+    
+    background-color: #E3750F;
+}
+/*アコーディオンタイトル*/
+.accordion {
+    position: relative;/*+マークの位置基準とするためrelative指定*/
+    cursor: pointer;
+    font-size:1rem;
+    font-weight: normal;
+    padding: 3% 3% 3% 50px;
+    transition: all .5s ease;
+    width: 100%;
+}
+.accordion-space {
+    height: 30px;
+    border-top: solid;
+    border-bottom: solid;
+    border-width: thin;
+}
+.accordion:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 45%;
+    right: 30px;
+    width: 10px;
+    height: 10px;
+    border-right: 3px solid #4F4F4F;
+    border-bottom: 3px solid #4F4F4F;
+    transform: translateY(-50%) rotate(45deg);
+    transition: .3s;
+}
+
+/*　closeというクラスがついたら形状変化　*/
+.accordion.close::after{
+    transform: rotate(225deg);
+}
+/*アコーディオンで現れるエリア*/
+.box {
+    border-top: solid;
+    border-width: thin;
+    display: none;
+    padding: 2em 1em;
+}

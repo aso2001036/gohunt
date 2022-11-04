@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>投稿内容編集</title>
+	</head>
+<body background="">
+	<form action="" method="post">
+		<p>店舗名変更不可<br>
+		<p>店舗の写真を選択<br>
+		<input type="file" onChange="imgPreView(event)"><div id="preview"></div>
+		<script>
+		function imgPreView(event) {
+			  var file = event.target.files[0];
+			  var reader = new FileReader();
+			  var preview = document.getElementById("preview");
+			  var previewImage = document.getElementById("previewImage");
+			   
+			  if(previewImage != null) {
+			    preview.removeChild(previewImage);
+			  }
+			  reader.onload = function(event) {
+			    var img = document.createElement("img");
+			    img.setAttribute("src", reader.result);
+			    img.setAttribute("id", "previewImage");
+			    preview.appendChild(img);
+			  };
+			 
+			  reader.readAsDataURL(file);
+			}</script>
+			<p>住所<br>
+		<input type="text" name="address" size="30" placeholder="お店の住所を入力"></p>
+		<input type="button" value="地図を開く">
+		<p>コメント<br>
+		<p><input type="text" name="comment" size="70" placeholder="店舗のコメントを入力"></p>
+		
+		<table>
+		<caption>
+				<strong>タグ変更</strong>
+			</caption>
+		<thead>
+     		<tr><th>３行の表の１列目</th><th>３行の表の２列目</th><th>３行の表の３列目</th></tr>
+    	</thead>
+    		<tbody>
+     			<tr><th>タグ1</th><td>タグ2</td><td>タグ3</td></tr>
+    			 <tr><th>タグ4</th><td>タグ5<
+    			 </td><td>タグ6</td></tr>
+    		</tbody>
+    		</table>
+		<p><input type="button" value="確認"></p>
+		</form>
+		<!-- <img id="preview">
+		<script>
+		function previewFile(hoge){
+			var fileData = new FileReader();
+			fileData.onlord = (function(){
+				document.getElementById('preview').src = fileData.result;
+			});
+			fileData.readAsDataURL(hoge.files[0]);
+		}
+		
+		</script> -->
+</body>
+</html>
