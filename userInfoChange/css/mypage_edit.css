@@ -1,4 +1,9 @@
 @media screen and (max-width:480px){
+    
+    body{
+        background-image: url(../img/background.png);
+    }
+    
     h1{
        font-size: 45px;
     }
