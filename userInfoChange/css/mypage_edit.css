@@ -1,9 +1,4 @@
 @media screen and (max-width:480px){
-    
-    body{
-        background-image: url(../img/background.png);
-    }
-    
     h1{
        font-size: 45px;
     }
@@ -74,7 +69,14 @@ hr{
     border: solid 0.7px black;
 }
 .margin{
-    margin: 40px 0 0 0;
+    margin: -30px 0 0 0;
+}
+.example{
+    margin: 0px 0 30px 20px;
+        border: none;
+        outline: none;
+        border-bottom: 1.5px solid black;
+        padding: 5px 10px;
 }
 button{
     width: 180px;
