@@ -1,0 +1,20 @@
+.title_banner_top{
+    text-align: center;
+}
+.top-title {
+    color: #ffeeee;
+    font-size: 36px;
+}
+
+.button{
+	box-sizing: border-box;
+
+position: relative;
+width: 138px;
+height: 55px;
+
+background: #E3750F;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
