@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,6 +67,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="./js/shopinfo.js"></script>
 </body>
+<<<<<<< HEAD
 =======
 <!DOCTYPE html>
 <html>
@@ -131,4 +135,6 @@
 <script src="./js/shopinfo.js"></script>
 </body>
 >>>>>>> origin/main
+=======
+>>>>>>> origin/master
 </html>

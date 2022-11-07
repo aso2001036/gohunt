@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
 @charset "UTF-8";
 
 body{
@@ -93,6 +96,7 @@ a.newAco{
     -webkit-box-shadow: 0 4px 10px #777;
     background-color: #E3750F;
     color: #fff;
+<<<<<<< HEAD
 =======
 @charset "UTF-8";
 
@@ -189,4 +193,6 @@ a.newAco{
     background-color: #E3750F;
     color: #fff;
 >>>>>>> origin/main
+=======
+>>>>>>> origin/master
 }
