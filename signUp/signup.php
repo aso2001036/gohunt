@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -63,5 +62,4 @@
     <br>
 </div>
 </body>
->>>>>>> origin/main
 </html>
