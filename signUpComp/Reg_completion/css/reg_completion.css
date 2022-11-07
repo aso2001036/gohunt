@@ -1,0 +1,232 @@
+<<<<<<< HEAD
+@charset "UTF-8";
+
+body{
+    margin: auto;
+    background-size: cover;
+    background-image: url("../img/background.png");
+    background-color: rgba(36,36,36,0.8);
+    background-repeat: no-repeat;
+}
+
+h2{
+    color: #ffffff;
+    position: absolute;
+    text-align: center;
+    height: 15vw;
+    width: 100vw;
+    top: 7vw;
+    -webkit-box-shadow: 0 10px 10px #777;
+    background-color: #505050;
+    font-size: 10vw;
+}
+h3{
+    position: relative;
+    font-size: 8vw;
+    text-align:center;
+    top: 10vw;
+}
+
+.IPhone{
+    box-sizing: border-box;
+    position: absolute;
+    width: 90vw;
+    height: 90vw;
+    left: 5vw;
+    top: 50vw;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    z-index: 1;
+}
+.Form{
+    top: -3vw;
+    text-align: center;
+    position: relative;
+}
+.Form p{
+    font-size: 4vw;
+    left: 5vw;
+    color: #000000;
+    text-shadow: 0 2px 5px #000;
+    text-align: left;
+    position: relative;
+}
+.Form input{
+    width: 80vw;
+    height: 11vw;
+    left: 10vw;
+    background: #D2D2D2;
+    border-radius:30px 30px 30px 30px;
+    box-shadow: -2px 3px 5px rgba(0,0,0,0.5) inset;
+}
+.Form a{
+    top: 10vw;
+    left: 10vw;
+    margin-top: 10vw;
+    position: relative;
+}
+
+.Form h3{
+    font-size: 4.5vw;
+}
+
+a{
+    text-decoration: none;
+}
+a.newAco{
+    color: #80C2FF;
+    font-size: 5vw;
+    top: 17vw;
+    left: 22vw;
+    position: relative;
+    -webkit-text-stroke: 1px #ce8d8d59;
+    text-shadow: none;
+}
+.ra{
+    width: 65%;
+    left: 16vw;
+    color: #000;
+    text-shadow: 0 2px 5px #000;
+    position:relative;
+    margin-right:2px;
+}
+
+.ra label{
+    font-size: 3vw;
+    left: -7vw;
+    top: -4vw;
+    margin: 4vw;
+    position: relative;
+}
+
+.SignUp{
+    top: 35vw;
+    left: 12vw;
+    padding: 5px 50px;
+    font-size: 80px;
+    font-family:  "Comic Sans MS";
+    border: 3px solid #000000;
+    border-radius: 5%;
+    position: relative;
+    -webkit-box-shadow: 0 4px 10px #777;
+    background-color: #E3750F;
+    color: #fff;
+=======
+@charset "UTF-8";
+
+body{
+    margin: auto;
+    background-size: cover;
+    background-image: url("../img/background.png");
+    background-color: rgba(36,36,36,0.8);
+    background-repeat: no-repeat;
+}
+
+h2{
+    color: #ffffff;
+    position: absolute;
+    text-align: center;
+    height: 15vw;
+    width: 100vw;
+    top: 7vw;
+    -webkit-box-shadow: 0 10px 10px #777;
+    background-color: #505050;
+    font-size: 10vw;
+}
+h3{
+    position: relative;
+    font-size: 8vw;
+    text-align:center;
+    top: 10vw;
+}
+
+.IPhone{
+    box-sizing: border-box;
+    position: absolute;
+    width: 90vw;
+    height: 90vw;
+    left: 5vw;
+    top: 50vw;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    z-index: 1;
+}
+.Form{
+    top: -3vw;
+    text-align: center;
+    position: relative;
+}
+.Form p{
+    font-size: 4vw;
+    left: 5vw;
+    color: #000000;
+    text-shadow: 0 2px 5px #000;
+    text-align: left;
+    position: relative;
+}
+.Form input{
+    width: 80vw;
+    height: 11vw;
+    left: 10vw;
+    background: #D2D2D2;
+    border-radius:30px 30px 30px 30px;
+    box-shadow: -2px 3px 5px rgba(0,0,0,0.5) inset;
+}
+.Form a{
+    top: 10vw;
+    left: 10vw;
+    margin-top: 10vw;
+    position: relative;
+}
+
+.Form h3{
+    font-size: 4.5vw;
+}
+
+a{
+    text-decoration: none;
+}
+a.newAco{
+    color: #80C2FF;
+    font-size: 5vw;
+    top: 17vw;
+    left: 22vw;
+    position: relative;
+    -webkit-text-stroke: 1px #ce8d8d59;
+    text-shadow: none;
+}
+.ra{
+    width: 65%;
+    left: 16vw;
+    color: #000;
+    text-shadow: 0 2px 5px #000;
+    position:relative;
+    margin-right:2px;
+}
+
+.ra label{
+    font-size: 3vw;
+    left: -7vw;
+    top: -4vw;
+    margin: 4vw;
+    position: relative;
+}
+
+.SignUp{
+    top: 35vw;
+    left: 12vw;
+    padding: 5px 50px;
+    font-size: 80px;
+    font-family:  "Comic Sans MS";
+    border: 3px solid #000000;
+    border-radius: 5%;
+    position: relative;
+    -webkit-box-shadow: 0 4px 10px #777;
+    background-color: #E3750F;
+    color: #fff;
+>>>>>>> origin/main
+}
