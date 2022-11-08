@@ -1,12 +1,39 @@
 <html>
 	<head>
+		  <link rel="stylesheet" href="css/style.css">
+  		  <link rel="stylesheet" type="text/css" href="css/Post.css">
 		<meta charset="UTF-8">
 		<title>投稿</title>
 	</head>
 <body background="">
+<div class="page">
+<div class="title"></div>
+<div class="post">
+<a class="shop_name">店舗名</a>
+<div class="kana">
+<a class="kana"></a>
+</div>
+<div class="name_input">
+<input type="text" class="name_input">
+</div> 
+<div class="shop_img"></div>
+<div class="locate">
+<input type="text" class="location">
+</div>
+<div class="map">
+<input type="button" class="open_map">
+</div>
+<div class="star">
+<a class="star1">入りやすさ</a>
+<a class="star2">味</a>
+<a class="star3">雰囲気</a>
+</div>
+
+</div>
+</div>
 	<form action="" method="post">
-		<p>店舗名<br>
-		<input type="text" name="shop_name" size="30" placeholder="店舗名を入力"></p>
+		<div><p>店舗名<br>
+		<input type="text" class="shop_name" size="30" placeholder="店舗名を入力"></p>
 		<p>店舗の写真を選択<br>
 		<input type="file" onChange="imgPreView(event)"><div id="preview"></div>
 		<script>
@@ -28,18 +55,19 @@
 			 
 			  reader.readAsDataURL(file);
 			}</script>
+			</div>
 			<p>住所<br>
-		<input type="text" name="address" size="30" placeholder="お店の住所を入力"></p>
+		<input type="text" class="address" size="30" placeholder="お店の住所を入力"></p>
 		<script>
 		function  msgdsp() {
 	           alert("開発中");
 	       }</script>
-     <input type="button" name="B1"
+     <input type="button" class="B1"
      value="地図表示"
      onclick="msgdsp()">
      
 		<p>コメント<br>
-		<p><input type="text" name="comment" size="70" placeholder="店舗のコメントを入力"></p>
+		<p><input type="text" class="comment" size="70" placeholder="店舗のコメントを入力"></p>
 		<p>評価<br>
 		<p>入りやすさ<br>
     <div id="stars">
@@ -131,7 +159,7 @@
     			 <tr><th>タグ4</th><td>タグ5</td><td>タグ6</td></tr>
     		</tbody>
 		</table>
-		<p><input type="button" value="確認"></p>
+		<p><input type="button" class="button" value="確認"></p>
 		</form>
 		<img id="preview">
 <!-- 		<script>
