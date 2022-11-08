@@ -7,8 +7,9 @@
 </head>
 <body>
 <div class="page">
-
+    <!-- 背景-->
     <div class="backimg"></div>
+    <!-- 画像、タイトル-->
     <div class="img">
         <a class="back"><<</a>
     <img class="img" src="./img/Frame%2089.png">
@@ -16,12 +17,15 @@
     </div>
     <div class="frame">
         <div class="info">
+            <!-- 日付-->
             <a class="day">投稿日:2022/10/11</a>
             <a class="fday">最終更新日:2022/10/15</a>
             <div class="address">
+                <!-- 住所-->
                 <a class="jyuusyo">住所</a>
                 <a class="add">福岡県福岡市...</a>
             </div>
+            <!-- MAP検索-->
             <div class="search">
                 <a class="map">地図を開く</a>
                 <div class="accordion-box column">
@@ -33,6 +37,7 @@
                     </div>
                 </div>
             </div>
+            <!-- 評価-->
             <div class="star">
                 <a class="hyouka">評価</a>
                 <div class="bigstar">
@@ -47,13 +52,16 @@
                     ☆☆☆☆☆
             <input type="button" class="value" value="お店を評価する">
             </div>
+            <!-- タグ-->
                 <a class="tag">タグ</a>
             <div class="tag">
                 <button type="submit" class="tag" formaction="(URL 一覧)" form="(フォームID)">タグ</button>
                 <button type="submit" class="tag" formaction="(URL 一覧)" form="(フォームID)">タグ</button>
             </div>
+            <!-- コメント-->
                 <a class="com">コメント</a>
                     <textarea class="text"></textarea><br>
+            <!-- 編集ボタン-->
             <div class="btn">
                     <button type="submit"  class="edit" formaction="(URL 編集ページ)" form="(フォームID)">編集する</button>
             </div>
