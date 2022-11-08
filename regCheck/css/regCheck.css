@@ -1,0 +1,108 @@
+/* 投稿確認ページの背景 */
+.background {
+    margin: auto;
+    background-size: contain;
+    background-image: url("../img/background.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 1400px;/* ページによって変更 */
+    background-color: rgba(36,36,36,0.8);
+}
+/* 投稿確認ページの要素 */
+.store_confirm_text {
+    margin-left: 10px;
+    font-size: 28px;
+}
+.store_confirm_content {
+    margin: auto;
+    background-color: #FFFFFF;
+    border: solid 2px #333333;
+    border-radius: 0.75em;
+    width: 90%;
+}
+.store_namekana_box{
+    width: 80%;
+    margin-left: 20px;
+    font-size: 20px;
+    border: none;
+}
+.store_name_box{
+    width: 80%;
+    margin-left: 20px;
+    font-size: 32px;
+    border: none;
+}
+.address_box {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 98%;
+    height: auto;
+    font-size: 20px;
+    white-space: normal;
+    border: none;
+}
+/* 評価のCSS */
+.evaluation_text {
+    font-size: 20px;
+    margin-left: 15px;
+}
+.evaluation{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+.evaluation input[type='radio']{
+    display: none;
+}
+.evaluation label{
+    position: relative;
+    padding: 10px 10px 0;
+    color: gray;
+    cursor: pointer;
+    font-size: 50px;
+}
+.evaluation label .text{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: gray;
+}
+.evaluation label:hover,
+.evaluation label:hover ~ label,
+.evaluation input[type='radio']:checked ~ label{
+    color: #ffcc00;
+}
+/* タグのCSS */
+.tag_button{
+    box-sizing: border-box;
+    width: 101px;
+    height: 32px;
+    left: 15px;
+    top: 31px;
+    font-size: 24px;
+    color: #FFFFFF;
+    background: #E3750F;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+/* コメントエリアのCSS */
+.store_textarea {
+    margin: auto;
+    width: 95%;
+    height: 175px;
+}
+.img{
+    margin: auto;
+}
+/* 投稿ボタンのCSS */
+.post_button {
+    margin-left: 80px;
+    margin-bottom: 20px;
+    background-color: #E3750F;
+    color: #FFFFFF;
+    font-size: 40px;
+    border-radius: 15px;
+}
