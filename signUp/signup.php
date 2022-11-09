@@ -72,9 +72,9 @@ if (!empty($_POST)) {
             <p>性別</p>
         </div>
         <div class = "ra">
-            <label><input type = "radio" name = "sex_flag" style="transform: scale(4.0)" value = "男">　男　</label>
-            <label><input type = "radio" name = "sex_flag" style="transform: scale(4.0)" value = "女">　女　</label>
-            <label><input type = "radio" name = "sex_flag" style="transform: scale(4.0)" value = "その他">　その他　</label>
+            <label><input type = "radio" name = "sex_flag" style="transform: scale(4.0)" value = "0">　男　</label>
+            <label><input type = "radio" name = "sex_flag" style="transform: scale(4.0)" value = "1">　女　</label>
+            <label><input type = "radio" name = "sex_flag" style="transform: scale(4.0)" value = "2">　その他　</label>
         </div>
         <button type="submit" value="send" class = "SignUp">確認</button><br>
     </form><br>
