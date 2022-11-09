@@ -1,140 +1,84 @@
 <?php
-function passCheck($pass,$checkpass){
-    $error['password'] = true;
-    if($pass === "" || $checkpass === "" ){
-        $error['password'] = 'blank';
-
-    }elseif(strlen($pass) < 5 || strlen($checkpass) < 5 || strlen($pass) > 15 || strlen($checkpass) > 15 ){
-        $error['password'] = 'length';
-    }elseif(strcmp($pass, $checkpass)){
-        $error['password'] = 'notSame';
-    }
-    return $error;
+try {
+    $db = new PDO('mysql:host=mysql207.phy.lolipop.lan;
+dbname=LAA1290592-gohunt;charaset=utf8',
+        'LAA1290592',
+        'Tomita5963');
+}   catch (PDOException $e) {
+    echo "データベース接続エラー　：".$e->getMessage();
 }
+session_start();
 
-function mailCheck($email,$pdo){
-    $error['email'] = true;
-    if($email === ""){
-        $error['email'] = 'blank';
+if (!empty($_POST)) {
+    /* 入力情報の不備を検知 */
+    if ($_POST['user_mail'] === "") {
+        $error['user_mail'] = "blank";
     }
-    else if(!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email)){
-        $error['email'] = "notMatch";
+    if ($_POST['user_pass'] === "") {
+        $error['user_pass'] = "blank";
     }
-    if($error['email'] ===true){
-        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_users WHERE user_mail=?');
-        $member->execute(array(
-            $email
+
+
+    /* メールアドレスの重複を検知 */
+    if (!isset($error)) {
+        $m_user = $db->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE user_mail=?');
+        $m_user->execute(array(
+            $_POST['user_mail']
         ));
-        $record = $member->fetch();
+        $record = $m_user->fetch();
         if ($record['cnt'] > 0) {
-            $error['email'] = 'duplicate';
-        }
-    }
-    return $error;
-}
-
-function nameCheck($name){
-    $error['name'] = true;
-    if($name === ""){
-        $error['name'] = 'blank';
-    }
-    else if(strlen($name)>20){
-        $error['name'] = 'length';
-    }
-    return $error;
-}
-
-function sexCheck($sex){
-    $error['sex'] = true;
-    if($sex != '1' && $sex !='2' && $sex != '3' ){
-        $error['sex'] = 'notMatch';
-    }
-    return $error;
-}
-
-function tokenCheck($token,$pdo){
-    $error['token'] = true;
-    $sql = "SELECT pre_user_mail FROM m_pre_users WHERE pre_user_token=(:pre_user_token) AND flag =0 AND reg_date > now() - interval 24 hour";
-    $stm = $pdo->prepare($sql);
-    $stm->bindValue(':pre_user_token', htmlspecialchars($token), PDO::PARAM_STR);
-    $stm->execute();
-
-
-    //レコード件数取得
-    $row_count = $stm->rowCount();
-
-
-    //24時間以内に仮登録され、本登録されていないトークンの場合
-    if( $row_count != 1){
-        $error['token'] = "urltoken_timeover";
-    }
-    return $error;
-}
-
-function mailCountCheck($token,$pdo){
-    $error['email'] = true;
-    if($error['email'] ===true){
-        $sql = "SELECT pre_user_mail FROM m_pre_users WHERE pre_user_token=(:pre_user_token) AND flag =0 AND reg_date > now() - interval 24 hour";
-        $stm = $pdo->prepare($sql);
-        $stm->bindValue(':pre_user_token', htmlspecialchars($token), PDO::PARAM_STR);
-        $stm->execute();
-        $result = $stm->fetch(PDO::FETCH_ASSOC);
-        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_users WHERE user_mail=?');
-        $member->execute(array(
-            htmlspecialchars($result['pre_user_mail'])
-        ));
-        $record = $member->fetch();
-        if ($record['cnt'] > 0) {
-            $error['email'] = 'duplicate';
-        }
-    }
-    return $error;
-}
-
-function loginCheck($mail,$pass,$pdo){
-    $idFlag = false;
-    $passFlag = false;
-    $flag = false;
-    print_r($passFlag);
-
-    $statement = $pdo->prepare("select user_pass from m_users where user_mail=(:user_mail)");
-    $statement->bindValue(':user_mail', htmlspecialchars($mail), PDO::PARAM_STR);
-//    echo 'test';
-    $statement->execute();
-    $result = $statement->fetch(PDO::FETCH_ASSOC);
-    $count = $statement ->rowCount();
-//    print_r($result);
-//    print_r($count);
-    if($count == 1){
-        foreach ($result as $row) {
-//            print_r($row);
-            $hash = $row;
-            $idFlag = true;
-            $passFlag = password_verify($pass,$hash);
-//            var_dump($passFlag);
+            $error['user_mail'] = 'duplicate';
         }
     }
 
-    if($idFlag && $passFlag){
-        $flag = true;
+    /* エラーがなければ次のページへ */
+    if (!isset($error)) {
+        $_SESSION['join'] = $_POST;   // フォームの内容をセッションで保存
+        header('Location: reg_confirm.php');   // check.phpへ移動
+        exit();
     }
-    return $flag;
 }
-
-function mailExistCheck($mail,$pdo){
-    $error['email'] = false;
-    $statement = $pdo->prepare("select user_pass from m_users where user_mail=(:user_mail)");
-    $statement->bindValue(':user_mail', htmlspecialchars($mail), PDO::PARAM_STR);
-//    echo 'test';
-    $statement->execute();
-//    $result = $statement->fetch(PDO::FETCH_ASSOC);
-    $count = $statement ->rowCount();
-//    print_r($result);
-//    print_r($count);
-    if($count == 1){
-        $error['email']  = true;
-    }
-    return $error;
-}
-
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8">
+    <link rel = "stylesheet" href = "./css/signup.css">
+</head>
+<body>
+<h2>新規登録</h2>
+<div class = "IPhone">
+    <form action = "" method = "post">
+        <div class = "Form">
+            <p>ユーザーネーム</p>
+            <input type = "text" name = "user_name">
+            <p>メールアドレス</p>
+            <input type = "text" name = "user_mail">
+            <?php if (!empty($error["user_mail"]) && $error['user_mail'] === 'blank'): ?>
+                <p class="error">＊メールアドレスを入力してください</p>
+            <?php elseif (!empty($error["user_mail"]) && $error['user_mail'] === 'duplicate'): ?>
+                <p class="error">＊このメールアドレスはすでに登録済みです</p>
+            <?php endif ?>
+            <p>パスワード</p>
+            <input type = "text" name = "user_pass">
+            <?php if (!empty($error["user_pass"]) && $error['user_pass'] === 'blank'): ?>
+                <p class="error">＊パスワードを入力してください</p>
+            <?php endif ?>
+            <p>パスワード（再）</p>
+            <input type = "text" name = "user_pass">
+            <?php if (!empty($error["user_pass"]) && $error['user_pass'] === 'blank'): ?>
+                <p class="error">＊パスワードを入力してください</p>
+            <?php endif ?>
+            <p>性別</p>
+        </div>
+        <div class = "ra">
+            <label><input type = "radio" name = "sex_flag" style="transform: scale(4.0)" value = "男">　男　</label>
+            <label><input type = "radio" name = "sex_flag" style="transform: scale(4.0)" value = "女">　女　</label>
+            <label><input type = "radio" name = "sex_flag" style="transform: scale(4.0)" value = "その他">　その他　</label>
+        </div>
+        <button type="submit" value="send" class = "SignUp">確認</button><br>
+    </form><br>
+
+</div>
+</body>
+</html>
