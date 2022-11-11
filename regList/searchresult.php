@@ -1,0 +1,51 @@
+<?php
+session_start();
+require("./dbmanager.php");
+$pdo = getDb();
+$pdo= null;
+?>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset = "utf-8">
+  <link rel = "stylesheet" href = "./css/searchresults.css">
+  <script src="script/searchresult.js"></script>
+</head>
+<body>
+<h2>検索結果</h2>
+<div class="a">
+<div class = "Room">
+  <div class = "deta">
+    <div class="border">
+      <img src="img/Burger Cafe goofy.jpg" height="3024" width="4032"/>
+    </div>
+    <p><h3>BurgerCafegoofy</h3></p>
+    <p>📍福岡県糸島市志摩茶屋911-2</p>
+    <p>最終更新日：2022/11/01</p>
+  </div>
+</div>
+
+  <div class = "Room">
+    <div class = "deta">
+      <div class="border">
+        <img src="img/TANNAL.JPG" height="3024" width="4032"/>
+      </div>
+        <p><h3>TANNAL</h3></p>
+      <p>📍福岡県糸島市志摩吉田1640-2</p>
+      <p>最終更新日：2022/11/01</p>
+    </div>
+  </div>
+<!--<div class = "Room02">
+  <div class = "deta02">
+
+  </div>
+</div>
+
+<div class = "Room03">
+  <div class = "deta03">
+
+  </div>
+</div>-->
+</div>
+</body>
+</html>
