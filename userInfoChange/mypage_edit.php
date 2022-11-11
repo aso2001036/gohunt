@@ -59,7 +59,15 @@ if (!empty($_POST)) {
             <p>メールアドレス</p>
             <div class="margin"></div>
             <input type="email" id="email" class="example">
+            <?php if (!empty($error["mail"]) && $error['mail'] === 'blank'): ?>
+                    <p class="error">＊メールアドレスを入力してください</p>
+                <?php elseif (!empty($error["mail"]) && $error['mail'] === 'duplicate'): ?>
+                    <p class="error">＊このメールアドレスはすでに登録済みです</p>
+                <?php endif ?>
             <p>パスワード</p>
+            <?php if (!empty($error["password"]) && $error['password'] === 'blank'): ?>
+                    <p class="error">＊パスワードを入力してください</p>
+                <?php endif ?>
             <div class="margin"></div>
             <input type="password" id="pass" class="example">
             <div class="hoge_button">
