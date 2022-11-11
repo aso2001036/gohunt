@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="jp">
-<head>
-<img src="img/titlelogo.png" class="titlelogo">
-<link rel="stylesheet" href="css/mstyle.css">
+<link rel="stylesheet" href="../header/css/mstyle.css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"
     charset="utf-8"></script>
-<script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="../header/js/menu.js"></script>
 </head>
 <body>
 <div class="nav-right visible-xs">
@@ -46,4 +42,3 @@
         <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">ヘルプ</a></li>
     </ul>
 </div>
-</body>
