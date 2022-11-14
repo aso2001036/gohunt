@@ -1,7 +1,15 @@
 <?php
 session_start();
-require("./dbmanager.php");
+require("./conect.php");
 $pdo = getDb();
+$word = '';
+$resultcount = 0;
+if (isset($_GET['keyword'])){
+  //検索用処理
+  $keyword = $_GET['keyword'];
+  $sql = $pdo->prepare('select m_shop.shop_id , m_shop.shop_name, m_shop.shop_name_rubi, from m_shop where shop_name LIKE "%'.$keyword.'%"');
+  $sql->execute();
+}
 $pdo= null;
 ?>
 <!DOCTYPE html>
@@ -15,24 +23,35 @@ $pdo= null;
 <h2>検索結果</h2>
 <div class="a">
 <div class = "Room">
-  <div class = "deta">
-    <div class="border">
-      <img src="img/Burger Cafe goofy.jpg" height="3024" width="4032"/>
-    </div>
-    <p><h3>BurgerCafegoofy</h3></p>
-    <p>📍福岡県糸島市志摩茶屋911-2</p>
-    <p>最終更新日：2022/11/01</p>
-  </div>
-</div>
-
-  <div class = "Room">
-    <div class = "deta">
-      <div class="border">
-        <img src="img/TANNAL.JPG" height="3024" width="4032"/>
-      </div>
-        <p><h3>TANNAL</h3></p>
-      <p>📍福岡県糸島市志摩吉田1640-2</p>
-      <p>最終更新日：2022/11/01</p>
+<?php
+    $count = count($result);
+    if ($count === 0){
+        echo '<div class="not-find">該当する商品がありません</div>';
+    } else {
+        echo '<div class="item-container">';
+        for ($i=0; $i < $count; $i+=4){
+            echo '<div class="item-row">';
+            for ($j=0; $j < 4; $j++){
+                echo '<div class="merchandises">';
+                echo '<a href="item-detail.php?id='.$result[$j+$i]['shop_id'].'" class="item-link">';
+                echo '<img src="./img/item-img/'.$result[$j+$i]['item_img_url'].'" class="item-img">';
+                echo '<div class="info">';
+                echo '<span>'.$result[$j+$i]['shop_name'].'</span><br>';
+                echo '<div class="price">';
+                echo '<span>'.$result[$j+$i]['shop_name_rubi'].'</span>';
+                echo '</div>';
+                echo '</div>';
+                echo '</a>';
+                echo '</div>';
+                if($j+$i == $count-1){
+                    break;
+                }
+            }
+            echo '</div>';
+        }
+        echo '</div>';
+    }
+    ?>
     </div>
   </div>
 <!--<div class = "Room02">
