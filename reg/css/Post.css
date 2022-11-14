@@ -1,3 +1,6 @@
+@charset "UTF-8";
+
+
 .title_banner_top{
     text-align: center;
 }
@@ -18,3 +21,162 @@ border: 1px solid #000000;
 border-radius: 10px;
 }
 
+.B1{
+	box-sizing: border-box;
+
+position: relative;
+width: 138px;
+height: 55px;
+
+background: #E3750F;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
+.txt{
+	display: inline-block;
+	width: 100%;
+	padding: 0.5em;
+	
+}
+
+.page{
+	 text-align:center;
+}
+
+.comment{
+	width: 100%;
+	
+}
+
+.open-tag{
+	position: center;
+	box-sizing: border-box;
+
+position: absolute;
+width: 33px;
+height: 21px;
+left: 171px;
+top: 182px;
+
+background: #D9D9D9;
+border: 1px solid #000000;
+transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.tag_button1{
+box-sizing: border-box;
+
+width: 138px;
+height: 55px;
+left: 101px;
+top: 121px;
+
+background: #E3750F;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
+.tag_button2{
+box-sizing: border-box;
+
+width: 138px;
+height: 55px;
+left: 101px;
+top: 121px;
+
+background: #E3750F;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
+.tag_button3{
+box-sizing: border-box;
+
+width: 138px;
+height: 55px;
+left: 101px;
+top: 121px;
+
+background: #E3750F;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
+.tag_button4{
+box-sizing: border-box;
+
+width: 138px;
+height: 55px;
+left: 101px;
+top: 121px;
+
+background: #E3750F;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
+.tag_button5{
+box-sizing: border-box;
+
+width: 138px;
+height: 55px;
+left: 101px;
+top: 121px;
+
+background: #E3750F;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
+.tag_button6{
+box-sizing: border-box;
+
+width: 138px;
+height: 55px;
+left: 101px;
+top: 121px;
+
+background: #E3750F;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
+.tag_button7{
+box-sizing: border-box;
+
+width: 138px;
+height: 55px;
+left: 101px;
+top: 121px;
+
+background: #E3750F;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
+.tag_button8{
+box-sizing: border-box;
+
+width: 138px;
+height: 55px;
+left: 101px;
+top: 121px;
+
+background: #E3750F;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
+.tag_button9{
+box-sizing: border-box;
+
+width: 138px;
+height: 55px;
+left: 101px;
+top: 121px;
+
+background: #E3750F;
+border: 1px solid #000000;
+border-radius: 10px;
+}
