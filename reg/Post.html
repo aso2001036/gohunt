@@ -1,7 +1,7 @@
 <html>
 	<head>
-		  <link rel="stylesheet" href="css/style.css">
-  		  <link rel="stylesheet" type="text/css" href="css/Post.css">
+		  <link rel="stylesheet" href="./css/style.css">
+  		  <link rel="stylesheet" href="./css/Post.css">
 		<meta charset="UTF-8">
 		<title>投稿</title>
 	</head>
@@ -19,26 +19,8 @@
 							<div class="shop_img">
 							<p>店舗の写真を選択<br>
 									<input type="file" onChange="imgPreView(event)"><div id="preview"></div>
-									<script>
-									function imgPreView(event) {
-										  var file = event.target.files[0];
-										  var reader = new FileReader();
-										  var preview = document.getElementById("preview");
-										  var previewImage = document.getElementById("previewImage");
-										   
-										  if(previewImage != null) {
-										    preview.removeChild(previewImage);
-										  }
-										  reader.onload = function(event) {
-										    var img = document.createElement("img");
-										    img.setAttribute("src", reader.result);
-										    img.setAttribute("id", "previewImage");
-										    preview.appendChild(img);
-										  };
-										 
-										  reader.readAsDataURL(file);
-										}</script>
-							
+									<script src=".Post.js.js"></script>
+									
 							</div>
 <div class="locate">
 	<a class="juusyo">お店の場所</a><br>
@@ -84,19 +66,20 @@
 	<a class="shop_tag">タグ</a><br>
 		<button type="button" class="tag_button1">タグ1</button>
 		<button type="button" class="tag_button2">タグ2</button>
-		<button type="button" class="tag_button3">タグ3</button><br>
+		<button type="button" class="tag_button3">タグ3</button>
 		<button type="button" class="tag_button4">タグ4</button>
 		<button type="button" class="tag_button5">タグ5</button>
-		<button type="button" class="tag_button6">タグ6</button><br>
+		<button type="button" class="tag_button6">タグ6</button>
 		<button type="button" class="tag_button7">タグ7</button>
 		<button type="button" class="tag_button8">タグ8</button>
 		<button type="button" class="tag_button9">タグ9</button>
+		<button type="button" class="open-tag"></button>
 	
 </div>
+<div><a class="come">コメント</a>
+		<p><input type="text" class="comment" placeholder="店舗のコメントを入力"></p>
+		</div>
 </div>
 </div>
-     
-		<a class="come">コメント</a>
-		<p><input type="text" class="comment" size="70" placeholder="店舗のコメントを入力"></p>
 </body>
 </html>
