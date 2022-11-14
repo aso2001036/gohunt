@@ -3,26 +3,26 @@ require("./conect.php");
 session_start();
 if (!empty($_POST)) {
     /* 入力情報の不備を検知 */
-    if ($_POST['mail'] === "") {
-        $error['mail'] = "blank";
+    if ($_POST['user_mail'] === "") {
+        $error['user_mail'] = "blank";
     }
-    if ($_POST['password'] === "") {
-        $error['password'] = "blank";
+    if ($_POST['user_pass'] === "") {
+        $error['user_pass'] = "blank";
     }
     
     /* メールアドレスの重複を検知 */
     if (!isset($error)) {
-        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE mail=?');
+        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE user_mail=?');
         $member->execute(array(
-            $_POST['mail']
+            $_POST['user_mail']
         ));
         $record = $member->fetch();
         if ($record['cnt'] > 0) {
-            $error['mail'] = 'duplicate';
+            $error['user_mail'] = 'duplicate';
         }
             
     if (!isset($error)) {
-        $_SESSION['user'] = $_POST['mail'];   // フォームの内容をセッションで保存
+        $_SESSION['join'] = $_POST;   // フォームの内容をセッションで保存
         exit();
     }
  }
@@ -59,19 +59,19 @@ if (!empty($_POST)) {
             <p>メールアドレス</p>
             <div class="margin"></div>
             <input type="email" id="email" class="example">
-            <?php if (!empty($error["mail"]) && $error['mail'] === 'blank'): ?>
+            <?php if (!empty($error["user_mail"]) && $error['user_mail'] === 'blank'): ?>
                     <p class="error">＊メールアドレスを入力してください</p>
-                <?php elseif (!empty($error["mail"]) && $error['mail'] === 'duplicate'): ?>
+                <?php elseif (!empty($error["user_mail"]) && $error['user_mail'] === 'duplicate'): ?>
                     <p class="error">＊このメールアドレスはすでに登録済みです</p>
                 <?php endif ?>
             <p>パスワード</p>
-            <?php if (!empty($error["password"]) && $error['password'] === 'blank'): ?>
+            <?php if (!empty($error["user_pass"]) && $error['user_pass'] === 'blank'): ?>
                     <p class="error">＊パスワードを入力してください</p>
                 <?php endif ?>
             <div class="margin"></div>
             <input type="password" id="pass" class="example">
             <div class="hoge_button">
-                <button type="submit" onclick="mypage.html" value="遷移">変更完了</button>
+            <button type="button" onclick="location.href='../userInfo/mypage.html'" value="遷移">変更完了</button>
             </div>
         </div>
     </form>
