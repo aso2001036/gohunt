@@ -1,6 +1,6 @@
 <?php
-require("./conect.php");
 session_start();
+require("./conect.php");
 if (!empty($_POST)) {
     /* 入力情報の不備を検知 */
     if ($_POST['user_mail'] === "") {
@@ -20,12 +20,14 @@ if (!empty($_POST)) {
         if ($record['cnt'] > 0) {
             $error['user_mail'] = 'duplicate';
         }
-            
+    }
+ 
+    /* エラーがなければ次のページへ */
     if (!isset($error)) {
         $_SESSION['join'] = $_POST;   // フォームの内容をセッションで保存
         exit();
     }
- }
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -48,7 +50,7 @@ if (!empty($_POST)) {
            <img src="img/cooltext421486115691405 1.png">
         </div>
     </div>
-    <form action="mypage_edit.php" method="post">
+    <form action="" method="post">
         <div class="box">
             <p>ユーザーID</p>
             <div class="margin"></div>
@@ -60,18 +62,18 @@ if (!empty($_POST)) {
             <div class="margin"></div>
             <input type="email" id="email" class="example">
             <?php if (!empty($error["user_mail"]) && $error['user_mail'] === 'blank'): ?>
-                    <p class="error">＊メールアドレスを入力してください</p>
-                <?php elseif (!empty($error["user_mail"]) && $error['user_mail'] === 'duplicate'): ?>
-                    <p class="error">＊このメールアドレスはすでに登録済みです</p>
-                <?php endif ?>
+                <p class="error">＊メールアドレスを入力してください</p>
+            <?php elseif (!empty($error["user_mail"]) && $error['user_mail'] === 'duplicate'): ?>
+                <p class="error">＊このメールアドレスはすでに登録済みです</p>
+            <?php endif ?>
             <p>パスワード</p>
-            <?php if (!empty($error["user_pass"]) && $error['user_pass'] === 'blank'): ?>
-                    <p class="error">＊パスワードを入力してください</p>
-                <?php endif ?>
             <div class="margin"></div>
             <input type="password" id="pass" class="example">
+            <?php if (!empty($error["user_pass"]) && $error['user_pass'] === 'blank'): ?>
+                <p class="error">＊パスワードを入力してください</p>
+            <?php endif ?>
             <div class="hoge_button">
-            <button type="button" onclick="location.href='../userInfo/mypage.html'" value="遷移">変更完了</button>
+                <button type="button" onclick="location.href='../userInfo/mypage.html'" value="遷移">変更完了</button>
             </div>
         </div>
     </form>
