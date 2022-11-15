@@ -7,8 +7,17 @@ $resultcount = 0;
 if (isset($_GET['keyword'])){
   //検索用処理
   $keyword = $_GET['keyword'];
-  $sql = $pdo->prepare('select m_shop.shop_id , m_shop.shop_name, m_shop.shop_name_rubi, from m_shop where shop_name LIKE "%'.$keyword.'%"');
+  if ($keyword!=null){
+  $sql = $pdo->prepare('select m.shop_id , m.shop_name, m.shop_name_rubi, from m_shop m where shop_name LIKE "%'.$keyword.'%"');
   $sql->execute();
+  $result = $sql->fetchALL(PDO::FETCH_ASSOC);
+  $sp = "OK";
+  } else{
+    $sql = $pdo->prepare('select m.shop_id , m.shop_name, m.shop_name_rubi, from m_shop m ');
+    $sql->execute();
+    $result = $sql->fetchALL(PDO::FETCH_ASSOC);
+    $sp = "NG";
+  }
 }
 $pdo= null;
 ?>
@@ -24,9 +33,11 @@ $pdo= null;
 <div class="a">
 <div class = "Room">
 <?php
+    echo '<div class="search-result">'.$sp.'の検索結果</div>';
     $count = count($result);
     if ($count === 0){
-        echo '<div class="not-find">該当する商品がありません</div>';
+        echo '<div class="search-result">'.$keyword.'の検索結果</div>';
+        echo '<div class="not-find">該当する店舗がありません。</div>';
     } else {
         echo '<div class="item-container">';
         for ($i=0; $i < $count; $i+=4){
@@ -37,7 +48,7 @@ $pdo= null;
                 echo '<img src="./img/item-img/'.$result[$j+$i]['item_img_url'].'" class="item-img">';
                 echo '<div class="info">';
                 echo '<span>'.$result[$j+$i]['shop_name'].'</span><br>';
-                echo '<div class="price">';
+                echo '<div class="shop_name_rubi">';
                 echo '<span>'.$result[$j+$i]['shop_name_rubi'].'</span>';
                 echo '</div>';
                 echo '</div>';
