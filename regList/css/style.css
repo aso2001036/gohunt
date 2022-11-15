@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 375px;
+    margin: auto;
+}
+.background {
+    margin: auto;
+    background-size: contain;
+    background-image: url("../img/background.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 812px;/* ページによって変更 */
+    background-color: rgba(36,36,36,0.8);
+}
+.logo {
+    font-size: 48px;
+    font-family: "AR BERKLEY";
+    color: #ffeeee;
+}
+.title_banner {
+    width: 100%;
+    background: rgba(36,36,36,1);
+    height: 60px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.title_page {
+    color: #ffeeee;
+    font-size: 40px;
+}
+.content{
+    margin: auto;
+    background-color: #FFFFFF;
+    border: solid 2px #333333;
+    border-radius: 0.75em;
+    width: 90%;
+    height: 60%;
+}
+.footer{
+
+}
+@media screen and (min-width: 481px) {
+    /* 481px以上に適用されるCSS（タブレット用） */
+    body {
+        max-width: 650px;
+        margin: auto;
+    }
+}
+@media screen and (min-width: 960px) {
+    /* 960px以上に適用されるCSS（PC用） */
+    body {
+        max-width: 750px;
+        margin: auto;
+    }
+}
