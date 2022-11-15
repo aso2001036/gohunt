@@ -1,45 +1,69 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
   <meta charset = "utf-8">
+  <link rel="stylesheet" href="./css/style.css">
   <link rel = "stylesheet" href = "./css/searchresults.css">
-  <script src="script/searchresult.js"></script>
 </head>
 <body>
-<h2>検索結果</h2>
-<div class="a">
-<div class = "Room">
-  <div class = "deta">
-    <div class="border">
-      <img src="img/Burger Cafe goofy.jpg" height="3024" width="4032"/>
-    </div>
-    <p><h3>BurgerCafegoofy</h3></p>
-    <p>📍福岡県糸島市志摩茶屋911-2</p>
-    <p>最終更新日：2022/11/01</p>
+<div class="background">
+  <a class="logo">ごはんと</a>
+  <div class="title_banner">
+    <a class="title_page">検索結果</a>
   </div>
-</div>
-
-  <div class = "Room">
-    <div class = "deta">
-      <div class="border">
-        <img src="img/TANNAL.JPG" height="3024" width="4032"/>
+  <div class="store_list_area"><!--検索結果表示-->
+    <div class="store_list" style="background-image: url(./img/sample.png)" ><!--store_listをfor文で出力(最大4件)、画像はurl内に-->
+      <a class="store_list_title">BurgerCafegoofy</a><!--text内をtitleに変更-->
+      <div class="store_list_text_area">
+        <a class="store_list_text">📍福岡県糸島市志摩茶屋911-2</a><br><!--text内をaddressに変更-->
+        <a class="store_list_text">最終更新日：</a><a class="store_list_text_date">2022/11/01</a><br><!--date内のtextを変更-->
+        <div class="store_list_rate_area">
+          <a class="star">★</a><a class="value">5.0</a><!--valueを変数-->
+        </div>
       </div>
-        <p><h3>TANNAL</h3></p>
-      <p>📍福岡県糸島市志摩吉田1640-2</p>
-      <p>最終更新日：2022/11/01</p>
+    </div>
+    <div class="store_list" style="background-image: url(./img/sample.png)" >
+      <a class="store_list_title">BurgerCafegoofy</a>
+      <div class="store_list_text_area">
+        <a class="store_list_text">📍福岡県糸島市志摩茶屋911-2</a><br><!---->
+        <a class="store_list_text">最終更新日：</a><a class="store_list_text_date">2022/11/01</a><br>
+        <div class="store_list_rate_area">
+          <a class="star">★</a><a class="value">5.0</a>
+        </div>
+      </div>
+    </div>
+    <div class="store_list" style="background-image: url(./img/sample.png)" >
+      <a class="store_list_title">BurgerCafegoofy</a>
+      <div class="store_list_text_area">
+        <a class="store_list_text">📍福岡県糸島市志摩茶屋911-2</a><br>
+        <a class="store_list_text">最終更新日：</a><a class="store_list_text_date">2022/11/01</a><br>
+        <div class="store_list_rate_area">
+          <a class="star">★</a><a class="value">5.0</a>
+        </div>
+      </div>
+    </div>
+    <div class="store_list" style="background-image: url(./img/sample.png)" ><!--url内をimg以降を変更-->
+      <a class="store_list_title">BurgerCafegoofy</a>
+      <div class="store_list_text_area">
+        <a class="store_list_text">📍福岡県糸島市志摩茶屋911-2</a><br>
+        <a class="store_list_text">最終更新日：</a><a class="store_list_text_date">2022/11/01</a><br>
+        <div class="store_list_rate_area">
+          <a class="star">★</a><a class="value">5.0</a>
+        </div>
+      </div>
+    </div>
+    <div class="pagination">
+      <ul class="paging"><!--ページネーションのエリア-->
+        <li><a href=""><</a></li><!--a内にページ移動のアドレスを-->
+        <li><a href="">1</a></li>
+        <li><a href="">2</a></li>
+        <li><a href="">3</a></li>
+        <li><a href="">4</a></li>
+        <li><a href="">5</a></li>
+        <li><a href="">></a></li>
+      </ul>
     </div>
   </div>
-<!--<div class = "Room02">
-  <div class = "deta02">
-
-  </div>
-</div>
-
-<div class = "Room03">
-  <div class = "deta03">
-
-  </div>
-</div>-->
 </div>
 </body>
 </html>
