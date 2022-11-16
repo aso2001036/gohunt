@@ -34,10 +34,10 @@
 
 <div class="sidebar">
     <ul class="sidebar-list">
-        <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">メインページ</a></li>
-        <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">マイページ</a></li>
-        <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">ログイン</a></li>
-        <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">投稿する</a></li>
+        <li class="sidebar-item"><a href="../top/top.php" class="sidebar-anchor">メインページ</a></li>
+        <li class="sidebar-item"><a href="../userInfo/mypage.php" class="sidebar-anchor">マイページ</a></li>
+        <li class="sidebar-item"><a href="../login/login.php" class="sidebar-anchor">ログイン</a></li>
+        <li class="sidebar-item"><a href="../reg/Post.html" class="sidebar-anchor">投稿する</a></li>
         <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">お問い合わせ</a></li>
         <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">ヘルプ</a></li>
     </ul>
