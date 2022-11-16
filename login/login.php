@@ -29,14 +29,14 @@ function setToken(){
 
 //セッション変数のトークンとPOSTされたトークンをチェック
 function checkToken(){
-    if(empty($_SESSION['token']) || ($_SESSION['token'] != $_POST['token'])){
-        echo 'Invalid POST', PHP_EOL;
+    if(empty($_SESSION['token'] || ($_SESSION['token'] != $_POST['token']))){
+        echo 'Invalid POST';
         exit;
     }
 }
 
 //POSTされた値のバリデーション
-function validation($datas,$confirm = true)
+function validations($datas,$confirm = true)
 {
     $errors = [];
 
@@ -50,7 +50,7 @@ function validation($datas,$confirm = true)
     //パスワードのチェック（正規表現）
     if(empty($datas["user_pass"])){
         $errors['user_pass']  = "Please enter a password.";
-    }else if(!preg_match('/\A[a-z\d]{8,100}+\z/i',$datas["user_pass"])){
+    }else if(!preg_match('/\A[a-z\d]{1,100}+\z/i',$datas["user_pass"])){
         $errors['user_pass'] = "Please set a password with at least 8 characters.";
     }
     return $errors;
@@ -66,8 +66,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 
 //POSTされてきたデータを格納する変数の定義と初期化
 $datas = [
-    'name'  => '',
-    'password'  => '',
+    'user_name'  => '',
+    'user_pass'  => '',
     'confirm_password'  => ''
 ];
 $login_err = "";
@@ -79,28 +79,29 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 
 //POST通信だった場合はログイン処理を開始
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+
     ////CSRF対策
     checkToken();
-
     // POSTされてきたデータを変数に格納
     foreach($datas as $key => $value) {
         if($value = filter_input(INPUT_POST, $key, FILTER_DEFAULT)) {
             $datas[$key] = $value;
         }
     }
-
     // バリデーション
-    $errors = validation($datas,false);
+    $errors = validations($datas,false);
+    var_dump($errors);
     if(empty($errors)){
         //ユーザーネームから該当するユーザー情報を取得
         $sql = "SELECT user_id,user_name,user_pass FROM m_user WHERE user_name = :user_name";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue('user_name',$datas['user_name'],PDO::PARAM_INT);
         $stmt->execute();
-
         //ユーザー情報があれば変数に格納
         if($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             //パスワードがあっているか確認
+            var_dump($datas['user_pass']);
+            var_dump($row['user_pass']);
             if (password_verify($datas['user_pass'],$row['user_pass'])) {
                 //セッションIDをふりなおす
                 session_regenerate_id(true);
@@ -108,15 +109,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION["loggedin"] = true;
                 $_SESSION["user_id"] = $row['user_id'];
                 $_SESSION["user_name"] =  $row['user_name'];
-                $_SESSION["sex_flag"] = $row['sex_flag'];
                 //ウェルカムページへリダイレクト
-                header("location:welcome.php");
+                header("location:top.php");
                 exit();
             } else {
-                $login_err = 'Invalid username or password.';
+                $login_err = 'Invalid user_name or user_pass.';
             }
         }else {
-            $login_err = 'Invalid username or password.';
+            $login_err = 'Invalid user_name or user_pass.';
         }
     }
 }
@@ -136,13 +136,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form action = "<?php echo $_SERVER ['SCRIPT_NAME']; ?>" method = "post">
             <div class = "Form">
                 <p>ユーザーネーム</p>
-                <input type = "text" name = "user_name">
+                <input type="text" name="user_name" class="form-control <?php echo (!empty(h($errors['user_name']))) ? 'is-invalid' : ''; ?>" value="<?php echo h($datas['user_name']); ?>">
                 <p>パスワード</p>
-                <input type = "text" name = "user_pass"><br>
+                <input type="password" name="user_pass" class="form-control <?php echo (!empty(h($errors['user_pass']))) ? 'is-invalid' : ''; ?>" value="<?php echo h($datas['user_pass']); ?>"><br>
             </div>
+            <input type="hidden" name="token" value="<?php echo h($_SESSION['token']); ?>">
             <button type="submit" class = "Login">ログイン</button><br>
         </form><br>
-
         <br>
         <a href = "" class ="newAco">新規登録の方はこちら</a>
     </div>
