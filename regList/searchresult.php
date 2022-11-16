@@ -8,12 +8,12 @@ if (isset($_GET['keyword'])){
   //検索用処理
   $keyword = $_GET['keyword'];
   if ($keyword!=null){
-  $sql = $pdo->prepare('select m.shop_id , m.shop_name, m.shop_name_rubi, from m_shop m where shop_name LIKE "%'.$keyword.'%"');
+  $sql = $pdo->prepare('select m.shop_id , m.shop_name, m.shop_name_rubi from m_shop m where shop_name LIKE "%'.$keyword.'%"');
   $sql->execute();
   $result = $sql->fetchALL(PDO::FETCH_ASSOC);
   $sp = "OK";
   } else{
-    $sql = $pdo->prepare('select m.shop_id , m.shop_name, m.shop_name_rubi, from m_shop m ');
+    $sql = $pdo->prepare('select m.shop_id , m.shop_name, m.shop_name_rubi , t.shop_image_ID from m_shop m INNER JOIN t_shopImage_ID t ON m.shop_id = t.shop_id');
     $sql->execute();
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);
     $sp = "NG";
@@ -45,11 +45,11 @@ $pdo= null;
             for ($j=0; $j < 4; $j++){
                 echo '<div class="merchandises">';
                 echo '<a href="item-detail.php?id='.$result[$j+$i]['shop_id'].'" class="item-link">';
-                echo '<img src="./img/item-img/'.$result[$j+$i]['item_img_url'].'" class="item-img">';
                 echo '<div class="info">';
                 echo '<span>'.$result[$j+$i]['shop_name'].'</span><br>';
                 echo '<div class="shop_name_rubi">';
                 echo '<span>'.$result[$j+$i]['shop_name_rubi'].'</span>';
+                echo '<span>'.$result[$j+$i]['shop_image_ID'].'</span>';
                 echo '</div>';
                 echo '</div>';
                 echo '</a>';
