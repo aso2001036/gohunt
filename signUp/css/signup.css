@@ -53,6 +53,7 @@ h2{
     background: #D2D2D2;
     border-radius:30px 30px 30px 30px;
     box-shadow: -2px 3px 5px rgba(0,0,0,0.5) inset;
+    font-size: 8vw;
 }
 .Form a{
     top: 10vw;
