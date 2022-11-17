@@ -1,9 +1,9 @@
 <?php
 try {
     $db = new PDO('mysql:host=mysql207.phy.lolipop.lan;
-dbname=LAA1290592-gohunt;charaset=utf8',
-        'LAA1290592',
-        'Tomita5963');
+    dbname=LAA1290570-gohunt;charaset=utf8',
+        'LAA1290570',
+        'gohunt');
 }   catch (PDOException $e) {
     echo "データベース接続エラー　：".$e->getMessage();
 }
@@ -60,12 +60,12 @@ if (!empty($_POST)) {
                 <p class="error">＊このメールアドレスはすでに登録済みです</p>
             <?php endif ?>
             <p>パスワード</p>
-            <input type = "text" name = "user_pass">
+            <input type = 'text' name = "user_pass">
             <?php if (!empty($error["user_pass"]) && $error['user_pass'] === 'blank'): ?>
                 <p class="error">＊パスワードを入力してください</p>
             <?php endif ?>
             <p>パスワード（再）</p>
-            <input type = "text" name = "user_pass">
+            <input type = 'text' name = "user_pass">
             <?php if (!empty($error["user_pass"]) && $error['user_pass'] === 'blank'): ?>
                 <p class="error">＊パスワードを入力してください</p>
             <?php endif ?>
