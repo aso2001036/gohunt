@@ -1,9 +1,9 @@
 <?php
 try {
     $db = new PDO('mysql:host=mysql207.phy.lolipop.lan;
-dbname=LAA1290592-gohunt;charaset=utf8',
-        'LAA1290592',
-        'Tomita5963');
+    dbname=LAA1290570-gohunt;charaset=utf8',
+    'LAA1290570',
+    'gohunt');
 }   catch (PDOException $e) {
     echo "データベース接続エラー　：".$e->getMessage();
 }
