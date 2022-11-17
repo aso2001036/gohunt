@@ -1,6 +1,13 @@
 <?php
+try {
+    $db = new PDO('mysql:host=mysql207.phy.lolipop.lan;
+dbname=LAA1290637-aso2001028;charaset=utf8',
+        'LAA1290637',
+        'syun0612');
+}   catch (PDOException $e) {
+    echo "データベース接続エラー :".$e->getMessage();
+}
 session_start();
-require("./conect.php");
 if (!empty($_POST)) {
     /* 入力情報の不備を検知 */
     if ($_POST['user_mail'] === "") {
@@ -73,7 +80,7 @@ if (!empty($_POST)) {
                 <p class="error">＊パスワードを入力してください</p>
             <?php endif ?>
             <div class="hoge_button">
-                <button type="button" onclick="location.href='../userInfo/mypage.html'" value="遷移">変更完了</button>
+                <button type="button" onclick="location.href='../userInfo/mypage.php'" value="遷移">変更完了</button>
             </div>
         </div>
     </form>
