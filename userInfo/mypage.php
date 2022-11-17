@@ -1,31 +1,13 @@
 <?php
-require("./conect.php");
+try {
+    $db = new PDO('mysql:host=mysql207.phy.lolipop.lan;
+dbname=LAA1290637-aso2001028;charaset=utf8',
+        'LAA1290637',
+        'syun0612');
+}   catch (PDOException $e) {
+    echo "データベース接続エラー :".$e->getMessage();
+}
 session_start();
-if (!empty($_POST)) {
-    /* 入力情報の不備を検知 */
-    if ($_POST['user_mail'] === "") {
-        $error['user_mail'] = "blank";
-    }
-    if ($_POST['user_pass'] === "") {
-        $error['user_pass'] = "blank";
-    }
-    
-    /* メールアドレスの重複を検知 */
-    if (!isset($error)) {
-        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE user_mail=?');
-        $member->execute(array(
-            $_POST['user_mail']
-        ));
-        $record = $member->fetch();
-        if ($record['cnt'] > 0) {
-            $error['user_mail'] = 'duplicate';
-        }
-            
-    if (!isset($error)) {
-        $_SESSION['join'] = $_POST;   // フォームの内容をセッションで保存
-        exit();
-    }
- }
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -51,20 +33,20 @@ if (!empty($_POST)) {
         <form action="" method="post">
             <div class="box">
                 <p>ユーザーID</p>
-                <h3><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['user_id'], ENT_QUOTES); ?></span></h3>
+                <?php echo htmlspecialchars($_POST['user_id']);?>
                 <hr width="300px">
                 <div class="margin">
                     <p>ユーザー名</p>
-                    <h3><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['user_name'], ENT_QUOTES); ?></span></h3>
+                    <?php echo htmlspecialchars($_SESSION['user_name']);?>
                 </div>
                 <hr width="300px">
                 <div class="margin">
                     <p>メールアドレス</p>
-                    <h3><span class="fas fa-angle-double-right"></span> <span class="check-info"><?php echo htmlspecialchars($_SESSION['join']['user_mail'], ENT_QUOTES); ?></span></h3>
+                    <?php echo htmlspecialchars($_SESSION['user_mail']);?>
                 </div>
                 <hr width="300px">
                 <div class="hoge_button">
-                <button type="button" onclick="location.href='../userInfoChange/mypage_edit.html'" value="遷移">情報変更</button>
+                <button type="button" onclick="location.href='../userInfoChange/mypage_edit.php'" value="遷移">情報変更</button>
                 </div>
             </div>
         </form>
