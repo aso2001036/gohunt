@@ -10,7 +10,7 @@
 <div class="background">
   <a class="logo">logo</a><br>
   <div class="detail_image" style="background-image: url(./img/sample.png)">
-    <a class="back"><<</a><br>
+    <a href="#" onclick="history.back(-1);return false;" class="back"><<</a><br>
     <input type="text" value="○○ラーメン" name="" class="store_detail_title" readonly>
   </div>
   <div class="sub_background">
@@ -75,25 +75,23 @@
         <input id="ambience1" type="radio" name="atmosphere" value="1">
         <label for="ambience1">★</label>
       </div>
-      <input type="button" class="evaluation_button" value="お店を評価する">
+      <input type="button" class="evaluation_button" value="お店を評価する"><br>
+        <!-- タグ-->
+        <a class="store_detail_list">タグ</a><br>
+        <div class="tag">
+          <button type="submit" class="tag_button" formaction="(URL 一覧)" form="(フォームID)">タグ</button>
+          <button type="submit" class="tag_button" formaction="(URL 一覧)" form="(フォームID)">タグ</button>
+        </div>
+        <!-- コメント-->
+        <a class="store_detail_list">コメント</a><br>
+        <textarea class="text_area"></textarea><br>
+        <!-- 編集ボタン-->
+        <div class="btn">
+          <button type="submit"  class="edit_button" formaction="(URL 編集ページ)" form="(フォームID)">編集する</button>
+        </div>
       </form>
     </div>
   </div>
-  </div>
-      <!-- タグ-->
-      <a class="store_detail_list">タグ</a>
-      <div class="tag">
-        <button type="submit" class="tag" formaction="(URL 一覧)" form="(フォームID)">タグ</button>
-        <button type="submit" class="tag" formaction="(URL 一覧)" form="(フォームID)">タグ</button>
-      </div>
-      <!-- コメント-->
-      <a class="store_detail_list">コメント</a>
-      <textarea class="text"></textarea><br>
-      <!-- 編集ボタン-->
-      <div class="btn">
-        <button type="submit"  class="edit" formaction="(URL 編集ページ)" form="(フォームID)">編集する</button>
-      </div>
-    </div>
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
