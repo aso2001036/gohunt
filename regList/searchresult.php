@@ -8,12 +8,16 @@ if (isset($_GET['keyword'])){
   //検索用処理
   $keyword = $_GET['keyword'];
   if ($keyword!=null){
-  $sql = $pdo->prepare('select m.shop_id , m.shop_name, m.shop_name_rubi from m_shop m where shop_name LIKE "%'.$keyword.'%"');
+  $sql = $pdo->prepare('select * from m_shop m LEFT OUTER JOIN t_shopImage_ID t ON (m.shop_name LIKE "%'.$keyword.'%" AND m.shop_id = t.shop_id)
+                        LEFT OUTER JOIN t_shopImage i ON t.shop_image_ID = i.shop_image_ID
+                        LEFT OUTER JOIN m_shopAddres a ON m.shop_id = a.shop_id');
   $sql->execute();
   $result = $sql->fetchALL(PDO::FETCH_ASSOC);
   $sp = "OK";
   } else{
-    $sql = $pdo->prepare('select m.shop_id , m.shop_name, m.shop_name_rubi , t.shop_image_ID from m_shop m INNER JOIN t_shopImage_ID t ON m.shop_id = t.shop_id');
+    $sql = $pdo->prepare('select * from m_shop m LEFT OUTER JOIN t_shopImage_ID t ON m.shop_id = t.shop_id
+                          LEFT OUTER JOIN t_shopImage i ON t.shop_image_ID = i.shop_image_ID
+                          LEFT OUTER JOIN m_shopAddres a ON m.shop_id = a.shop_id');
     $sql->execute();
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);
     $sp = "NG";
@@ -39,6 +43,7 @@ $pdo= null;
         echo '<div class="search-result">'.$keyword.'の検索結果</div>';
         echo '<div class="not-find">該当する店舗がありません。</div>';
     } else {
+        echo '<div class="search-result">'.$keyword.'の検索結果</div>';
         echo '<div class="item-container">';
         for ($i=0; $i < $count; $i+=4){
             echo '<div class="item-row">';
@@ -46,10 +51,11 @@ $pdo= null;
                 echo '<div class="merchandises">';
                 echo '<a href="item-detail.php?id='.$result[$j+$i]['shop_id'].'" class="item-link">';
                 echo '<div class="info">';
+                echo '<span>'.$result[$j+$i]['shop_name_rubi'].'</span>';
                 echo '<span>'.$result[$j+$i]['shop_name'].'</span><br>';
                 echo '<div class="shop_name_rubi">';
-                echo '<span>'.$result[$j+$i]['shop_name_rubi'].'</span>';
-                echo '<span>'.$result[$j+$i]['shop_image_ID'].'</span>';
+                echo '<span>'.$result[$j+$i]['shop_image'].'</span>';
+                echo '<span>'.$result[$j+$i]['shop_address'].'</span>';
                 echo '</div>';
                 echo '</div>';
                 echo '</a>';
