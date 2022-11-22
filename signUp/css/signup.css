@@ -33,11 +33,13 @@ h2{
     border-radius: 10px;
     z-index: 1;
 }
+
 .Form{
     top: -3vw;
     text-align: center;
     position: relative;
 }
+
 .Form p{
     font-size: 4vw;
     left: 5vw;
@@ -46,6 +48,7 @@ h2{
     text-align: left;
     position: relative;
 }
+
 .Form input{
     width: 80vw;
     height: 11vw;
@@ -55,15 +58,18 @@ h2{
     box-shadow: -2px 3px 5px rgba(0,0,0,0.5) inset;
     font-size: 8vw;
 }
+
 .Form a{
     top: 10vw;
     left: 10vw;
     margin-top: 10vw;
     position: relative;
 }
+
 a{
     text-decoration: none;
 }
+
 a.newAco{
     color: #80C2FF;
     font-size: 5vw;
@@ -73,13 +79,13 @@ a.newAco{
     -webkit-text-stroke: 1px #ce8d8d59;
     text-shadow: none;
 }
+
 .ra{
     position: relative;
     font-size: 4vw;
     left: 5vw;
     top: -5vw;
 }
-
 
 .SignUp{
     top: -5vw;
