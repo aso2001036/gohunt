@@ -41,22 +41,28 @@ $pdo= null;
     if ($count === 0){
         echo '<div class="not-find">該当する店舗がありません。</div>';
     } else {
+      if($keyword==null){
+        echo '<div class="search-result"></div>';
+      } else{
         echo '<div class="search-result">'.$keyword.'の検索結果</div>';
-        echo '<div class="item-container">';
+      }
+        echo '<div class="container">';
         for ($i=0; $i < $count; $i+=4){
             echo '<div class="store_list_area">';
             for ($j=0; $j < 4; $j++){
-                echo '<div class="store_list" style="background-image: url(./img/'.$result[$j+$i]['shop_image'].')">';
-                echo '<a href="shopinfo.php?id='.$result[$j+$i]['shop_name'].'" class="store_list_title">';
+                echo '<div class="store_list">';
+                echo '<img src="./img/'.$result[$j+$i]['shop_image'].'" class="store_image">';
+                echo '<a href="shopinfo.php?id='.$result[$j+$i]['shop_id'].'">';
+                echo '<span class="store_list_title">'.$result[$j+$i]['shop_name'].'</span>';
                 echo '<div class="store_list_text_area">';
                 echo '<span class="store_list_text">'.$result[$j+$i]['shop_address'].'</span>';
                 echo '<span class="store_list_text">'.$result[$j+$i]['upd_date'].'</span>';
                 echo '<div class="store_list_rate_area">';
                 echo '<span class="star">★</span>';
                 echo '<span class="value">5.0</span>';
-                echo '</div>';
-                echo '</div>';
                 echo '</a>';
+                echo '</div>';
+                echo '</div>';
                 echo '</div>';
                 if($j+$i == $count-1){
                     break;
@@ -67,19 +73,6 @@ $pdo= null;
         echo '</div>';
     }
     ?>
-    </div>
-  </div>
-  <div class="pagination">
-      <ul class="paging"><!--ページネーションのエリア-->
-        <li><a href=""><</a></li><!--a内にページ移動のアドレスを-->
-        <li><a href="">1</a></li>
-        <li><a href="">2</a></li>
-        <li><a href="">3</a></li>
-        <li><a href="">4</a></li>
-        <li><a href="">5</a></li>
-        <li><a href="">></a></li>
-      </ul>
-    </div>
 </div>
 </body>
 </html>
