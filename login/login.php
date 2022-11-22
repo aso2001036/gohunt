@@ -1,9 +1,9 @@
 <?php
 //ファイルの読み込み
 /* ①　データベースの接続情報を定数に格納する */
-const DB_HOST = 'mysql:host=mysql207.phy.lolipop.lan;dbname=LAA1290592-gohunt;charaset=utf8';
-const DB_USER = 'LAA1290592';
-const DB_PASSWORD = 'Tomita5963';
+const DB_HOST = 'mysql:host=mysql207.phy.lolipop.lan;dbname=LAA1290570-gohunt;charaset=utf8';
+const DB_USER = 'LAA1290570';
+const DB_PASSWORD = 'gohunt';
 
 //②　例外処理を使って、DBにPDO接続する
 try {
