@@ -1,9 +1,9 @@
 <?php
 //ファイルの読み込み
 /* ①　データベースの接続情報を定数に格納する */
-const DB_HOST = 'mysql:host=mysql207.phy.lolipop.lan;dbname=LAA1290570-gohunt;charaset=utf8';
-const DB_USER = 'LAA1290570';
-const DB_PASSWORD = 'gohunt';
+const DB_HOST = 'mysql:host=mysql207.phy.lolipop.lan;dbname=LAA1290592-gohunt;charaset=utf8';
+const DB_USER = 'LAA1290592';
+const DB_PASSWORD = 'Tomita5963';
 
 //②　例外処理を使って、DBにPDO接続する
 try {
@@ -13,7 +13,7 @@ try {
         PDO::ATTR_EMULATE_PREPARES =>false
     ]);
 } catch (PDOException $e) {
-    echo 'ERROR: Could not connect.'.$e->getMessage()."\n";
+    echo '接続できませんでした。'.$e->getMessage()."\n";
     exit();
 }
 //XSS対策
@@ -30,7 +30,7 @@ function setToken(){
 //セッション変数のトークンとPOSTされたトークンをチェック
 function checkToken(){
     if(empty($_SESSION['token'] || ($_SESSION['token'] != $_POST['token']))){
-        echo 'Invalid POST';
+        echo '無効な投稿';
         exit;
     }
 }
@@ -44,14 +44,14 @@ function validations($datas,$confirm = true)
     if(empty($datas['user_name'])) {
         $errors['user_name'] = 'Please enter username.';
     }else if(mb_strlen($datas['user_name']) > 20) {
-        $errors['user_name'] = 'Please enter up to 20 characters.';
+        $errors['user_name'] = '20文字以内で入力してください。';
     }
 
     //パスワードのチェック（正規表現）
     if(empty($datas["user_pass"])){
         $errors['user_pass']  = "Please enter a password.";
     }else if(!preg_match('/\A[a-z\d]{1,100}+\z/i',$datas["user_pass"])){
-        $errors['user_pass'] = "Please set a password with at least 8 characters.";
+        $errors['user_pass'] = "パスワードは8文字以上で設定してください。";
     }
     return $errors;
 }
@@ -59,7 +59,7 @@ function validations($datas,$confirm = true)
 session_start();
 
 // セッション変数 $_SESSION["loggedin"]を確認。ログイン済だったらトップページへリダイレクト
-	if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: ../top/top.php");
     exit;
 }
@@ -111,11 +111,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 header("location:../top/top.php");
                 exit();
             } else {
-                var_dump($datas['user_pass']);
-            var_dump($row['user_pass']);
+                $login_err = 'ユーザーネームまたはパスワードが無効です。';
             }
         }else {
-            $login_err = 'Invalid user_name or user_pass.';
+            $login_err = 'ユーザーネームまたはパスワードが無効です。';
         }
     }
 }
