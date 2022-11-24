@@ -1,66 +1,76 @@
-.background {
-    margin: auto;
-    background-size: contain;
-    background-image: url("../img/background.png");
-    width: 100%;
-    height: 1300px;
-    background-color: rgba(36,36,36,0.8);
-}
 .store_list {
     margin-left: auto;
     margin-right: auto;
     width: 95%;
+    height: 25%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-color: #FFFFFF;
     border-radius: 10px;
     margin-bottom: 10px;
-    padding-top: 30%;
+    position: relative;
 }
-.store_list_img {
-    width: 100%;
+
+.store_image {
+    border-radius: 10px;
+    width: 357px;
+    height: 200px;
 }
+
 .store_list_text {
     font-size: 20px;
+    color: black;
 }
+
 .store_list_text_area {
     background-color: #FFFFFF;
+    border-radius: 10px;
 }
-.store_list_text_date{
+
+.store_list_text_date {
     font-size: 20px;
     color: #737373;
 }
-.store_list_title{
+
+.store_list_title {
     font-size: 28px;
     color: #FFFFFF;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
-.star{
+
+.star {
     font-size: 25px;
     color: #ffcf32;
 
 }
+
 .value {
     font-size: 20px;
     color: #737373;
 }
+
 .paging {
     list-style: none;
     padding: 20px 20px;
     justify-content: center;
     display: flex;
 }
+
 .paging li {
     margin-left: 10px;
     margin-right: 10px;
     color: #FFFFFF;
     font-size: 28px;
-    link: #FFFFF;
 }
+
 .paging li a {
     color: #FFFFFF;
     font-size: 28px;
 }
+
 .paging li a:hover {
     color: #FF7043;
 }
