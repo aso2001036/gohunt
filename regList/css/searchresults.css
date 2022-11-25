@@ -1,7 +1,7 @@
 .store_list {
     margin-left: auto;
     margin-right: auto;
-    width: 95%;
+    width: 357px;
     height: 25%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -13,7 +13,7 @@
 }
 
 .store_image {
-    border-radius: 10px;
+    border-radius: 10px 10px 0px 0px;
     width: 357px;
     height: 200px;
 }
@@ -26,6 +26,7 @@
 .store_list_text_area {
     background-color: #FFFFFF;
     border-radius: 10px;
+
 }
 
 .store_list_text_date {
@@ -37,8 +38,8 @@
     font-size: 28px;
     color: #FFFFFF;
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 75px;
+    left: 10px;
 }
 
 .star {
