@@ -90,7 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     // バリデーション
     $errors = validations($datas,false);
-    var_dump($errors);
+   
     if(empty($errors)){
         //ユーザーネームから該当するユーザー情報を取得
         $sql = "SELECT user_id,user_name,user_pass FROM m_user WHERE user_name = :user_name";
@@ -125,8 +125,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset = "utf-8">
     <link rel = "stylesheet" href = "./css/login.css">
-</head>
-<body>
+<?php require("../header/menu.php"); ?>
 <div class="back">
     <div class="title">
         <h2>ログイン</h2>
