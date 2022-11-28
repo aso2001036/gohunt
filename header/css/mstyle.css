@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic);
 
 body {
-    z-index: 1;
+    z-index: 5;
     background-size: 100% 1750px;
     background-repeat: no-repeat;
 }
@@ -14,9 +14,7 @@ html {
 }
 
 main {
-    z-index: 3;
     position: relative;
-    height: 100%;
     background: color 0;
     -webkit-transition: transform .7s ease-in-out;
     -moz-transition: transform .7s ease-in-out;
@@ -27,13 +25,12 @@ main {
 
 .titlelogo {
     z-index: 4;
-    width: 200px;
-    height: 100px;
-    margin-top: 30px;
-    margin-left: 40px;
+    height: 10vw;
+    margin-top: 3%;
+    margin-left: 5%;
 }
 
-.sidebar {
+#slide {
     height: 100%;
     width: 400px;
     position: fixed;
@@ -45,10 +42,10 @@ main {
 
 .bar {
     display: block;
-    height: 10px;
-    width: 100px;
+    height: 1vw;
+    width: 15vw;
     background-color: white;
-    margin: 20px auto;
+    margin: 3vw;
 }
 
 .button {
