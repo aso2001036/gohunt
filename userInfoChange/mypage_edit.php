@@ -1,37 +1,44 @@
-<?php
+<?php 
 try {
     $db = new PDO('mysql:host=mysql207.phy.lolipop.lan;
-dbname=LAA1290637-aso2001028;charaset=utf8',
-        'LAA1290637',
-        'syun0612');
+    dbname=LAA1290570-gohunt;charaset=utf8',
+        'LAA1290570',
+        'gohunt');
 }   catch (PDOException $e) {
-    echo "データベース接続エラー :".$e->getMessage();
+    echo "データベース接続エラー：".$e->getMessage();
 }
 session_start();
+
 if (!empty($_POST)) {
     /* 入力情報の不備を検知 */
+    if ($_POST['user_name'] === ""){
+        $error['user_name'] = "blank";
+    }
+
     if ($_POST['user_mail'] === "") {
         $error['user_mail'] = "blank";
     }
     if ($_POST['user_pass'] === "") {
         $error['user_pass'] = "blank";
     }
-    
+
+
     /* メールアドレスの重複を検知 */
     if (!isset($error)) {
-        $member = $pdo->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE user_mail=?');
-        $member->execute(array(
+        $m_user = $db->prepare('SELECT COUNT(*) as cnt FROM m_user WHERE user_mail=?');
+        $m_user->execute(array(
             $_POST['user_mail']
         ));
-        $record = $member->fetch();
+        $record = $m_user->fetch();
         if ($record['cnt'] > 0) {
             $error['user_mail'] = 'duplicate';
         }
     }
- 
+
     /* エラーがなければ次のページへ */
     if (!isset($error)) {
         $_SESSION['join'] = $_POST;   // フォームの内容をセッションで保存
+        header('Location: ../userInfo/mypage.php');   // check.phpへ移動
         exit();
     }
 }
@@ -61,13 +68,16 @@ if (!empty($_POST)) {
         <div class="box">
             <p>ユーザーID</p>
             <div class="margin"></div>
-            <input type="text" id="id" class="example" >
+            <input type="text" id="id" class="example" name="user_id" value="<?php if (!empty($result['user_id'])) echo(htmlspecialchars($result['user_id'], ENT_QUOTES, 'UTF-8'));?>">
             <p>ユーザー名</p>
             <div class="margin"></div>
-            <input type="text" id="name" class="example">
+            <input type="text" id="name" class="example" name="user_name"value="<?php if (!empty($result['user_name'])) echo(htmlspecialchars($result['user_name'], ENT_QUOTES, 'UTF-8'));?>">
+            <?php if (!empty($error["user_name"]) && $error['user_name'] === 'blank'): ?>
+                <p class="error">＊パスワードを入力してください</p>
+            <?php endif ?>
             <p>メールアドレス</p>
             <div class="margin"></div>
-            <input type="email" id="email" class="example">
+            <input type="email" id="email" class="example" name="user_mail" value="<?php if (!empty($result['user_mail'])) echo(htmlspecialchars($result['user_mail'], ENT_QUOTES, 'UTF-8'));?>">
             <?php if (!empty($error["user_mail"]) && $error['user_mail'] === 'blank'): ?>
                 <p class="error">＊メールアドレスを入力してください</p>
             <?php elseif (!empty($error["user_mail"]) && $error['user_mail'] === 'duplicate'): ?>
@@ -75,7 +85,7 @@ if (!empty($_POST)) {
             <?php endif ?>
             <p>パスワード</p>
             <div class="margin"></div>
-            <input type="password" id="pass" class="example">
+            <input type="password" id="pass" class="example" name="user_pass" value="<?php if (!empty($result['user_pass'])) echo(htmlspecialchars($result['user_pass'], ENT_QUOTES, 'UTF-8'));?>">>
             <?php if (!empty($error["user_pass"]) && $error['user_pass'] === 'blank'): ?>
                 <p class="error">＊パスワードを入力してください</p>
             <?php endif ?>
