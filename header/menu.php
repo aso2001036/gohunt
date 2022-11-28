@@ -3,7 +3,6 @@
     charset="utf-8"></script>
 <script type="text/javascript" src="../header/js/menu.js"></script>
 </head>
-<body>
 <div class="nav-right visible-xs">
     <div class="button" id="btn">
         <div class="bar top"></div>
@@ -14,7 +13,7 @@
 <!-- nav-right -->
 <main>
     <a href="demo.html">
-        <img src="img/titlelogo.png" class="titlelogo">
+        <img src="../header/img/titlelogo.png" class="titlelogo">
     </a>
     <nav>
         <div class="nav-right hidden-xs">
@@ -32,13 +31,20 @@
     </a>
 </main>
 
-<div class="sidebar">
-    <ul class="sidebar-list">
+<div class="sidebar"　id="slide">
+    <ul class="sidebar-list" id="slide-list">
         <li class="sidebar-item"><a href="../top/top.php" class="sidebar-anchor">メインページ</a></li>
         <li class="sidebar-item"><a href="../userInfo/mypage.php" class="sidebar-anchor">マイページ</a></li>
-        <li class="sidebar-item"><a href="../login/login.php" class="sidebar-anchor">ログイン</a></li>
+        <?php 
+        if(empty($_SESSION["loggedin"])||$_SESSION["loggedin"]==false){
+        echo '<li class="sidebar-item"><a href="../login/login.php" class="sidebar-anchor">ログイン</a></li>';
+        }else{
+        echo '<li class="sidebar-item"><a href="../logout/logout.php" class="sidebar-anchor">ログアウト</a></li>';
+        }
+        ?>
         <li class="sidebar-item"><a href="../reg/Post.html" class="sidebar-anchor">投稿する</a></li>
         <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">お問い合わせ</a></li>
         <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">ヘルプ</a></li>
     </ul>
 </div>
+<body>
