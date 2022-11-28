@@ -1,15 +1,18 @@
+<?php
+    session_start();
+    // セッション情報の保存
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>GOHUNT-Top</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="stylesheet" href="./css/style.css">
+
   <link rel="stylesheet" type="text/css" href="./css/top.css">
-</head>
-<body>
-<div class="background">
-  <a class="logo">logo</a><br>
+  <?php require("../header/menu.php"); ?>
+<div class="ttop">
   <div class="title_banner_top">
   <a class="top-title">～お店の検索～</a>
   </div>
@@ -79,8 +82,8 @@
   </div>
   <button type="button" class="Top-Store-Button">お店を投稿する</button>
   <div class="footer"></div>
-</div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="./js/top-script.js"></script>
+</div>
 </body>
 </html>
