@@ -49,6 +49,8 @@ main {
 }
 
 .button {
+    position: relative;
+    z-index: 3;
     cursor: pointer;
     display: inline-block;
     width: auto;
