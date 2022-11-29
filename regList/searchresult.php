@@ -28,34 +28,40 @@ $pdo= null;
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset = "utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel = "stylesheet" href = "./css/style.css">
   <link rel = "stylesheet" href = "./css/searchresult.css">
   <script src="script/searchresult.js"></script>
 </head>
 <body>
 <div class="background">
-<h2>検索結果</h2><!--検索結果表示-->
+  <div class="title_banner">
+    <img src="img/title_bar.png" class="title_bar">
+  </div>
 <!--store_listをfor文で出力(最大4件)、画像はurl内に-->
 <?php
     $count = count($result);
     if ($count === 0){
         echo '<div class="not-find">該当する店舗がありません。</div>';
+        echo '<div class="emptiness"></div>';    
     } else {
       if($keyword==null){
-        echo '<div class="search-result"></div>';
-      } else{
-        echo '<div class="search-result">'.$keyword.'の検索結果</div>';
+        echo '<div class="search-result">検索結果は'.$count.'件です。</div>';
+      } else if($keyword!=null){
+        echo '<div class="search-result">'.$keyword.'の検索結果は'.$count.'件です。</div>';
       }
         echo '<div class="container">';
         for ($i=0; $i < $count; $i+=4){
             echo '<div class="store_list_area">';
             for ($j=0; $j < 4; $j++){
                 echo '<div class="store_list">';
+                echo '<a class="index" href="shopinfo.php?id='.$result[$j+$i]['shop_id'].'">';
                 echo '<img src="./img/'.$result[$j+$i]['shop_image'].'" class="store_image">';
-                echo '<a href="shopinfo.php?id='.$result[$j+$i]['shop_id'].'">';
                 echo '<span class="store_list_title">'.$result[$j+$i]['shop_name'].'</span>';
                 echo '<div class="store_list_text_area">';
-                echo '<span class="store_list_text">'.$result[$j+$i]['shop_address'].'</span>';
+                echo '<img src="img/pin.png">';
+                echo '<span class="store_list_text">'.$result[$j+$i]['shop_address'].'</span><br>';
+                echo '<span class="store_list_text">最終更新日:</span>';
                 echo '<span class="store_list_text">'.$result[$j+$i]['upd_date'].'</span>';
                 echo '<div class="store_list_rate_area">';
                 echo '<span class="star">★</span>';
@@ -72,7 +78,11 @@ $pdo= null;
         }
         echo '</div>';
     }
+
     ?>
+</div>
+<div id="re-top">
+	<a href="#" class="re-topB">TOP</a>
 </div>
 </body>
 </html>
