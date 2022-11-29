@@ -12,6 +12,14 @@
     position: relative;
 }
 
+.index {
+    text-decoration: none;
+}
+
+.title_bar {
+    height: 100%;
+}
+
 .store_image {
     border-radius: 10px 10px 0px 0px;
     width: 357px;
@@ -26,7 +34,6 @@
 .store_list_text_area {
     background-color: #FFFFFF;
     border-radius: 10px;
-
 }
 
 .store_list_text_date {
@@ -38,11 +45,12 @@
     font-size: 28px;
     color: #FFFFFF;
     position: absolute;
-    bottom: 75px;
+    bottom: 35%;
     left: 10px;
 }
 
 .star {
+    margin-left: 80%;
     font-size: 25px;
     color: #ffcf32;
 
@@ -53,25 +61,36 @@
     color: #737373;
 }
 
-.paging {
-    list-style: none;
-    padding: 20px 20px;
-    justify-content: center;
-    display: flex;
+.re-topB {
+    position: relative;
+    display: block;
+    background-color: rgba(36, 36, 36, 0.8);
+    /*丸ボタンの色*/
+    color: rgb(255, 255, 255);
+    /*三角と文字色*/
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 30px;
+    padding-top: 30px;
+    box-sizing: border-box;
+    margin: auto;
 }
 
-.paging li {
-    margin-left: 10px;
-    margin-right: 10px;
+.search-result {
+    font-size: 30px;
     color: #FFFFFF;
-    font-size: 28px;
 }
 
-.paging li a {
+.not-find {
+    font-size: 25px;
     color: #FFFFFF;
-    font-size: 28px;
 }
 
-.paging li a:hover {
-    color: #FF7043;
+.emptiness {
+    height: 690px;
 }
