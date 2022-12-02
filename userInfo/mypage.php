@@ -1,18 +1,11 @@
 <?php
 try {
-    $dbh = new PDO('mysql:host=mysql207.phy.lolipop.lan;
-    dbname=LAA1290637-aso2001028;charaset=utf8',
+    $db = new PDO('mysql:host=mysql207.phy.lolipop.lan;
+dbname=LAA1290637-aso2001028;charaset=utf8',
         'LAA1290637',
         'syun0612');
-
-     $stmt = $dbh->query('SELECT * FROM user');
-
-     $result = 0;
-
-     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
 }   catch (PDOException $e) {
-    echo "データベース接続エラー：".$e->getMessage();
+    echo "データベース接続エラー :".$e->getMessage();
 }
 session_start();
 ?>
@@ -23,15 +16,7 @@ session_start();
     <title>マイページ</title>
     <link rel="stylesheet" href="css/mypage.css">
     <meta name="viewport" content="width=device-width,initial-scale-1">
-</head>
-<body>
-    <div class="gohant">
-         <img src="img/cooltext421301192687833 1-1.png">
-    </div>
-    <div class="hamburger-menu">
-        <input type="checkbox" id="menu-btn-check">
-        <label for="menu-btn-check" class="menu-btn"><span></span></label>
-    </div>
+<?php require("../header/menu.php"); ?>
     <div style="background-color:#505050;">
         <div class="mypage">
            <img src="img/cooltext421486115691405 1.png">
@@ -40,28 +25,16 @@ session_start();
         <form action="" method="post">
             <div class="box">
                 <p>ユーザーID</p>
-                <?php
-                foreach ($result as $user){
-                    echo $user['user_id'];
-                }
-                ?>
+                <?php echo htmlspecialchars($_POST['user_id']);?>
                 <hr width="300px">
                 <div class="margin">
                     <p>ユーザー名</p>
-                <?php
-                foreach ($result as $user){
-                    echo $user['user_name'];
-                }
-                ?>
+                    <?php echo htmlspecialchars($_SESSION['user_name']);?>
                 </div>
                 <hr width="300px">
                 <div class="margin">
                     <p>メールアドレス</p>
-                <?php
-                foreach ($result as $user){
-                    echo $user['user_mail'];
-                }
-                ?>
+                    <?php echo htmlspecialchars($_SESSION['user_mail']);?>
                 </div>
                 <hr width="300px">
                 <div class="hoge_button">
