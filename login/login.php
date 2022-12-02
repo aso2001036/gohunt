@@ -107,6 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION["loggedin"] = true;
                 $_SESSION["user_id"] = $row['user_id'];
                 $_SESSION["user_name"] =  $row['user_name'];
+                $_SESSION["user_mail"] = $row['user_mail'];
                 //ウェルカムページへリダイレクト
                 header("location:../top/top.php");
                 exit();
