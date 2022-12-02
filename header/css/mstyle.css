@@ -41,16 +41,29 @@ main {
 }
 
 .bar {
-    display: block;
+    position: absolute;
+    right: 5%;
     height: 1vw;
     width: 15vw;
     background-color: white;
     margin: 3vw;
 }
 
+.bar.bottom{
+    top: 8vw
+}
+
+.bar.top{
+    top: -2vw
+}
+
+.bar.middle{
+    left: -21vw;
+    top: 5.9vw
+}
+
 .button {
-    position: relative;
-    z-index: 3;
+    position: absolute;
     cursor: pointer;
     display: inline-block;
     width: auto;
@@ -97,32 +110,8 @@ main {
     transition: all .7s ease;
 }
 
-.button.active .top {
-    -webkit-transform: translateY(30px) rotateZ(45deg);
-    -moz-transform: translateY(30px) rotateZ(45deg);
-    -ms-transform: translateY(30px) rotateZ(45deg);
-    -o-transform: translateY(30px) rotateZ(45deg);
-    transform: translateY(30px) rotateZ(45deg);
-}
-
-.button.active .bottom {
-    -webkit-transform: translateY(-30px) rotateZ(-45deg);
-    -moz-transform: translateY(-30px) rotateZ(-45deg);
-    -ms-transform: translateY(-30px) rotateZ(-45deg);
-    -o-transform: translateY(-30px) rotateZ(-45deg);
-    transform: translateY(-30px) rotateZ(-45deg);
-}
-
 .button.active .middle {
-    width: 0;
-}
-
-.move-to-left {
-    -webkit-transform: translateX(-400px);
-    -moz-transform: translateX(-400px);
-    -ms-transform: translateX(-400px);
-    -o-transform: translateX(-400px);
-    transform: translateX(-400px);
+    transform: scale(1,14);
 }
 
 nav {
@@ -130,21 +119,27 @@ nav {
 }
 
 .sidebar-list {
-    top: -16.5vw;
-    left: 54vw;
-    width: 45.7vw;
     padding: 0;
     margin: 0;
     list-style: none;
-    position: relative;
+    position: absolute;
     margin-top: 0px;
     text-align: center;
-    z-index: 2;
+    left: 58%;
+    z-index: 99;
+    visibility: hidden;
+
 }
 
+.sidebar-list.active{
+    z-index: 99;
+    visibility: visible;
+}
 .sidebar-item {
     margin: 0;
     opacity: 0;
+    font-size: 2vw;
+    visibility: hidden;
     -webkit-transform: translateY(-20px);
     -moz-transform: translateY(-20px);
     -ms-transform: translateY(-20px);
@@ -207,7 +202,10 @@ nav {
 }
 
 .sidebar-item.active {
-    opacity: 1;
+    opacity: 100;
+    visibility: visible;
+    font-size: 2vw;
+    z-index: 999;
     -webkit-transform: translateY(0px);
     -moz-transform: translateY(0px);
     -ms-transform: translateY(0px);
@@ -272,6 +270,7 @@ nav {
     -o-transition: all 1s ease;
     transition: all 1s ease;
 }
+
 
 @media (min-width: 480px) {
     .nav-list {
