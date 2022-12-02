@@ -3,6 +3,7 @@
     charset="utf-8"></script>
 <script type="text/javascript" src="../header/js/menu.js"></script>
 </head>
+<div class="test" id="tes">
 <div class="nav-right visible-xs">
     <div class="button" id="btn">
         <div class="bar top"></div>
@@ -46,5 +47,6 @@
         <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">お問い合わせ</a></li>
         <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">ヘルプ</a></li>
     </ul>
+</div>
 </div>
 <body>
