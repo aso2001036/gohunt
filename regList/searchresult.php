@@ -21,7 +21,6 @@ if (isset($_GET['keyword'])){
     $result = $sql->fetchALL(PDO::FETCH_ASSOC);
   }
 }
-$pdo= null;
 ?>
 <!--HTML部分-->
 <!DOCTYPE html>
@@ -38,7 +37,6 @@ $pdo= null;
   <div class="title_banner">
     <img src="img/title_bar.png" class="title_bar">
   </div>
-<!--store_listをfor文で出力(最大4件)、画像はurl内に-->
 <?php
     $count = count($result);
     if ($count === 0){
@@ -54,6 +52,15 @@ $pdo= null;
         for ($i=0; $i < $count; $i+=4){
             echo '<div class="store_list_area">';
             for ($j=0; $j < 4; $j++){
+                $sql=$pdo->prepare('SELECT AVG(shop_Appearance_evaluation) as AP_AVG,AVG(shop_atmosphere_evaluation) as AT_AVG,AVG(shop_taste_evaluation)as TE_AVG FROM m_shopEvaluation WHERE shop_id='.$result[$j+$i]['shop_id'].'');
+                $sql->execute();
+                foreach ($sql as $row){
+                  $Appearance_AVG = $row['AP_AVG'];
+                  $atmosphere_AVG = $row['AT_AVG'];
+                  $taste_AVG = $row['TE_AVG'];
+                }
+                $average = ($Appearance_AVG + $atmosphere_AVG + $taste_AVG) / 3.0;
+                $average = round($average,1);
                 echo '<div class="store_list">';
                 echo '<a class="index" href="shopinfo.php?id='.$result[$j+$i]['shop_id'].'">';
                 echo '<img src="./img/'.$result[$j+$i]['shop_image'].'" class="store_image">';
@@ -65,7 +72,7 @@ $pdo= null;
                 echo '<span class="store_list_text">'.$result[$j+$i]['upd_date'].'</span>';
                 echo '<div class="store_list_rate_area">';
                 echo '<span class="star">★</span>';
-                echo '<span class="value">5.0</span>';
+                echo '<span class="value">'.number_format($average, 1).'</span>';
                 echo '</a>';
                 echo '</div>';
                 echo '</div>';
@@ -78,7 +85,7 @@ $pdo= null;
         }
         echo '</div>';
     }
-
+    $pdo= null;
     ?>
 </div>
 <div id="re-top">
