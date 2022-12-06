@@ -6,7 +6,6 @@
 		<title>投稿</title>
 	</head>
 <body>
-	<div class="background"></div>
 	<div class="page">
 		<div class="title"></div>
 			<div class="post">
@@ -18,11 +17,9 @@
 							<input type="text" class="name_input" placeholder="店舗名入力">
 						</div> 
 							<div class="shop_img">
-							<p><font size="7">店舗の写真を選択</font><br>
-									<input type="file" onChange="imgPreView(event)"><div id="preview"></div>
-									<script src="./js/Post.js"></script>
-									
-							</div>
+							<p><font size="7">店舗の写真を選択</font><br></div>
+									<div id="preview"><input type="file" onChange="imgPreView(event)"><br>
+									<script src="./js/Post.js"></script></div>
 <div class="locate">
 	<a class="juusyo"><font size="7">お店の場所</font></a><br>
 		<input type="text" class="location" placeholder="住所入力">
@@ -79,6 +76,7 @@
 <div><a class="come"><font size="7">コメント</font></a>
 		<p><input type="text" class="comment" placeholder="店舗のコメントを入力"></p>
 		</div>
+</div>
 </div>
 </div>
 </body>
