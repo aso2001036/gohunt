@@ -1,9 +1,11 @@
 <?php
+error_reporting(E_ALL & ~E_NOTICE);
 //ファイルの読み込み
 /* ①　データベースの接続情報を定数に格納する */
 const DB_HOST = 'mysql:host=mysql207.phy.lolipop.lan;dbname=LAA1290570-gohunt;charaset=utf8';
 const DB_USER = 'LAA1290570';
 const DB_PASSWORD = 'gohunt';
+
 
 //②　例外処理を使って、DBにPDO接続する
 try {
@@ -30,7 +32,7 @@ function setToken(){
 //セッション変数のトークンとPOSTされたトークンをチェック
 function checkToken(){
     if(empty($_SESSION['token'] || ($_SESSION['token'] != $_POST['token']))){
-        echo 'Invalid POST';
+        echo '無効な投稿';
         exit;
     }
 }
@@ -42,16 +44,16 @@ function validations($datas,$confirm = true)
 
     //ユーザー名のチェック
     if(empty($datas['user_name'])) {
-        $errors['user_name'] = 'Please enter username.';
+        $errors['user_name'] = 'ユーザー名を入力してください。';
     }else if(mb_strlen($datas['user_name']) > 20) {
-        $errors['user_name'] = 'Please enter up to 20 characters.';
+        $errors['user_name'] = '20文字以内で入力してください。';
     }
 
     //パスワードのチェック（正規表現）
     if(empty($datas["user_pass"])){
-        $errors['user_pass']  = "Please enter a password.";
+        $errors['user_pass']  = "パスワードを入力して下さい。";
     }else if(!preg_match('/\A[a-z\d]{1,100}+\z/i',$datas["user_pass"])){
-        $errors['user_pass'] = "Please set a password with at least 8 characters.";
+        $errors['user_pass'] = "パスワードは1文字以上で設定してください。";
     }
     return $errors;
 }
@@ -90,10 +92,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     // バリデーション
     $errors = validations($datas,false);
-   
+
     if(empty($errors)){
         //ユーザーネームから該当するユーザー情報を取得
-        $sql = "SELECT user_id,user_name,user_pass FROM m_user WHERE user_name = :user_name";
+        $sql = "SELECT user_id,user_name,user_pass,user_mail FROM m_user WHERE user_name = :user_name";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue('user_name',$datas['user_name'],PDO::PARAM_INT);
         $stmt->execute();
@@ -107,37 +109,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION["loggedin"] = true;
                 $_SESSION["user_id"] = $row['user_id'];
                 $_SESSION["user_name"] =  $row['user_name'];
-                $_SESSION["user_mail"] = $row['user_mail'];
+                $_SESSION["user_mail"] =  $row['user_mail'];
                 //ウェルカムページへリダイレクト
                 header("location:../top/top.php");
                 exit();
             } else {
-                var_dump($datas['user_pass']);
-            var_dump($row['user_pass']);
+                $login_err = 'ユーザーネームまたは パスワードが無効です。';
             }
         }else {
-            $login_err = 'Invalid user_name or user_pass.';
+            $login_err = 'ユーザーネームまたは パスワードが無効です。';
         }
     }
 }
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset = "utf-8">
-    <link rel = "stylesheet" href = "./css/login.css">
+<meta charset = "utf-8">
+<link rel = "stylesheet" href = "./css/login.css">
 <?php require("../header/menu.php"); ?>
 <div class="back">
     <div class="title">
         <h2>ログイン</h2>
     </div>
     <div class = "IPhone">
+	<?php 
+        if(!empty($login_err)){
+            echo '<div class="alert alert-danger">' . $login_err . '</div>';
+        }        
+        ?>
         <form action = "<?php echo $_SERVER ['SCRIPT_NAME']; ?>" method = "post">
             <div class = "Form">
                 <p>ユーザーネーム</p>
-                <input type="text" name="user_name" class="form-control <?php echo (!empty(h($errors['user_name']))) ? 'is-invalid' : ''; ?>" value="<?php echo h($datas['user_name']); ?>">
+                <input type="text" name="user_name" class="form-control <?php echo (!empty(h($errors['user_name']))) ? 'is-invalid' : ''; ?>" value="<?php echo h($datas['user_name']); ?>"><br>
+		<span class="invalid-feedback"><?php echo h($errors['user_name']); ?></span>
                 <p>パスワード</p>
                 <input type='password' name="user_pass" class="form-control <?php echo (!empty(h($errors['user_pass']))) ? 'is-invalid' : ''; ?>" value='<?php echo h($datas['user_pass']); ?>'><br>
+		<span class="invalid-feedback"><?php echo h($errors['user_pass']); ?></span>
+		<br>
             </div>
             <input type="hidden" name="token" value="<?php echo h($_SESSION['token']); ?>">
             <button type="submit" class = "Login">ログイン</button><br>
