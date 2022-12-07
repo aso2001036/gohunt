@@ -151,7 +151,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <button type="submit" class = "Login">ログイン</button><br>
         </form><br>
         <br>
-        <a href = "" class ="newAco">新規登録の方はこちら</a>
+        <a href="../signUp/signup.php" class ="newAco">新規登録の方はこちら</a>
     </div>
 </div>
 </body>
