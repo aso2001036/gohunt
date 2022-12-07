@@ -1,16 +1,5 @@
 <?php
 //評価の処理
-//エラーメッセージ(評価がnullの場合)
-$alert = "<script type='text/javascript'>alert('入力項目が不十分です。');</script>";
-
-//評価項目が抜けてた場合エラーメッセージを表示し前ページに戻る
-if($_POST['appearance'] == null){
-    echo $alert;
-}elseif ($_POST['atmosphere'] == null){
-    echo $alert;
-}elseif ($_POST['taste'] == null){
-    echo $alert;
-}
 $pdo = new PDO(
     'mysql:host=mysql207.phy.lolipop.lan;
     dbname=LAA1290570-gohunt;charaset=utf8',
@@ -40,8 +29,8 @@ $pdo = null;//DB接続解除
 
 ?>
 <?php
-http_response_code(301);
-header("location:https://aso2001031.perma.jp/front/evaluation.php");
+$url = $_SERVER['HTTP_REFERER'];
+header("Location: ".$url, true, 303 );
 exit();
 ?>
 
