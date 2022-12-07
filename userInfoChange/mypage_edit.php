@@ -77,7 +77,7 @@ if (!empty($_POST)) {
             <?php endif ?>
             <p>パスワード</p>
             <div class="margin"></div>
-            <input type="password" id="pass" class="example" name="user_pass" value="<?php if (!empty($result['user_pass'])) echo(htmlspecialchars($result['user_pass'], ENT_QUOTES, 'UTF-8'));?>">>
+            <input type="password" id="pass" class="example" name="user_pass" value="<?php if (!empty($result['user_pass'])) echo(htmlspecialchars($result['user_pass'], ENT_QUOTES, 'UTF-8'));?>">
             <?php if (!empty($error["user_pass"]) && $error['user_pass'] === 'blank'): ?>
                 <p class="error">＊パスワードを入力してください</p>
             <?php endif ?>
