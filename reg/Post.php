@@ -12,7 +12,7 @@
 		<?php require("../header/menu.php"); ?>
 	<div class="page">
 		<div class="title"></div>
-		<form action="../regCheck/regCheck.php" method="post">
+		<form action="../regCheck/regist.php" method="post" enctype="multipart/form-data">
 			<div class="post">
 				<a class="shop_name"><font size="10">店舗名</font></a>
 					<div class="kana_box">
