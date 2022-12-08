@@ -34,7 +34,7 @@
     <div class="accordion-box column">
       <a class="accordion"></a>
       <div class="box">
-        <form action="./searchresult.php" method="get">
+        <form action="../regList/searchresult.php" method="get">
           <input type="text" name="keyword" placeholder="”店舗名”を入力"><br>
           <button type="submit" >検索</button>
         </form>
