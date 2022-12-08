@@ -80,7 +80,7 @@
     </div>
     <div class="accordion-space"></div>
   </div>
-  <button type="button" class="Top-Store-Button">お店を投稿する</button>
+  <button type="button" class="Top-Store-Button" onclick="location.href='../reg/Post.php'">お店を投稿する</button>
   <div class="footer"></div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="./js/top-script.js"></script>
