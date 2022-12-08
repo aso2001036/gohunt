@@ -1,9 +1,13 @@
-<link rel="stylesheet" href="../header/css/mstyle.css">
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+<img src="img/titlelogo.png" class="titlelogo">
+<link rel="stylesheet" href="css/mstyle.css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"
     charset="utf-8"></script>
-<script type="text/javascript" src="../header/js/menu.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
 </head>
-<div class="test" id="tes">
+<body>
 <div class="nav-right visible-xs">
     <div class="button" id="btn">
         <div class="bar top"></div>
@@ -13,8 +17,8 @@
 </div>
 <!-- nav-right -->
 <main>
-    <a href="demo.html">
-        <img src="../header/img/titlelogo.png" class="titlelogo">
+    <a href="top.php">
+        <img src="img/titlelogo.png" class="titlelogo">
     </a>
     <nav>
         <div class="nav-right hidden-xs">
@@ -32,21 +36,14 @@
     </a>
 </main>
 
-<div class="sidebar"　id="slide">
-    <ul class="sidebar-list" id="slide-list">
-        <li class="sidebar-item"><a href="../top/top.php" class="sidebar-anchor">メインページ</a></li>
-        <li class="sidebar-item"><a href="../userInfo/mypage.php" class="sidebar-anchor">マイページ</a></li>
-        <?php 
-        if(empty($_SESSION["loggedin"])||$_SESSION["loggedin"]==false){
-        echo '<li class="sidebar-item"><a href="../login/login.php" class="sidebar-anchor">ログイン</a></li>';
-        }else{
-        echo '<li class="sidebar-item"><a href="../logout/logout.php" class="sidebar-anchor">ログアウト</a></li>';
-        }
-        ?>
-        <li class="sidebar-item"><a href="../reg/Post.html" class="sidebar-anchor">投稿する</a></li>
+<div class="sidebar">
+    <ul class="sidebar-list">
+        <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">メインページ</a></li>
+        <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">マイページ</a></li>
+        <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">ログイン</a></li>
+        <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">投稿する</a></li>
         <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">お問い合わせ</a></li>
         <li class="sidebar-item"><a href="demo.html" class="sidebar-anchor">ヘルプ</a></li>
     </ul>
 </div>
-</div>
-<body>
+</body>
