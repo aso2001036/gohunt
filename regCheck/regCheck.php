@@ -1,92 +1,133 @@
+<?php session_start() ?>
 <?php
-    session_start();
-    // セッション情報の保存
+
+$pdo = new PDO(
+    'mysql:host=mysql207.phy.lolipop.lan;
+    dbname=LAA1290570-gohunt;charaset=utf8',
+    'LAA1290570',
+    'gohunt');
+
+//店の名前、ルビ
+$shop_name=$_POST['shop_name'];
+$shop_name_rubi=$_POST['shop_name_rubi'];
+//店舗画像
+$shop_image=$_POST['shop_image'];
+//店住所,経度、緯度
+$shop_address=$_POST['shop_address'];
+$lat=$_POST['lat'];
+$lon=$_POST['lon'];
+//店評価
+$app=$_POST['app'];
+$atmo=$_POST['atmo'];
+$taste=$_POST['taste'];
+//タグ
+$tag_id=$_POST['tag_id'];
+//コメント
+$shop_explanation=$_POST['shop_explanation'];
+
+$cnt=count($tag_id);
+
+for($i=0;$i<$cnt;$i++) {
+    $stmt=$pdo->prepare("SELECT tag_name FROM m_tag WHERE tag_id=:tag_id");
+    $stmt->bindValue(':tag_id',$tag_id[$i]);
+    $stmt->execute();
+
+    foreach ($stmt as $row){
+        $tag_name[$i]=$row['tag_name'];
+    }
+}
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Gohunt - Check</title>
+    <title>Insert title here</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/regCheck.css">
-    </head>
+</head>
 <body>
-<div class="background">
-    <a class="logo">ごはんと</a>
-    <div class="title_banner">
-        <a class="title_page">ページ名</a>
+<div class="page">
+<!-- 背景-->
+    <div class="black"></div>
+    <div class="backimg"></div>
+    <!-- タイトル-->
+    <div class="title">
+        <div class="titleimg"></div>
     </div>
-    <div class="store_confirm_content">
-        <form action="./store_post_insert.php" method="post">
-            <a class="store_confirm_text">店舗名</a><br>
-            <?php
-             echo '<input type="text" class="store_namekana_box" value="',$_POST['shopNameKana'],'" readonly name="kana"><br>';//valueを変数名に
-             echo '<input type="text" class="store_name_box" value="',$_POST['shopName'],'" readonly name="name"><br>';
-            ?>
-            <a class="store_confirm_text">店舗画像</a><br>
-            <?php
-              echo '<img class="img" src="./img/',$_POST['shopImg'],'><br>';//srcのimg以降のアドレスを変更
-            ?>
-            <a class="store_confirm_text">住所</a><br>
-            <?php
-              echo '<input type="text" class="address_box" value="',$_POST['shopJusyo'],'" readonly name="address">';//valueを変数名に
-            ?>
-            <div class="star">
-                <a class="store_confirm_text">評価</a><br>
-                <a class="evaluation_text">入りやすさ</a><br>
-                <div class="evaluation">
-                    <?php
-                    //echo '<p><span class="star5_rating" data-rate="',$_POST[''],'"></span></p>';//data-rateの中を変数に
-                    //echo '<input type="hidden" name="appearance" value="',$_POST[''],'">';//valueを変数に
-                    ?>
-                </div>
-                <a class="evaluation_text">味</a><br>
-                <div class="evaluation">
-                    <?php
-                    //echo '<p><span class="star5_rating" data-rate="',$_POST[''],'"></span></p>';//data-rateの中を変数に
-                    //echo '<input type="hidden" name="taste" value="',$_POST[''],'">';//valueを変数に
-                    ?>
-                </div>
-                <a class="evaluation_text">雰囲気</a><br>
-                <div class="evaluation">
-                    <?php
-                    //echo '<p><span class="star5_rating" data-rate="',$_POST[''],'"></span></p>';//data-rateの中を変数に
-                    //echo '<input type="hidden" name="atmosphere" value="',$_POST[''],'">';//valueを変数に
-                    ?>
-                </div>
+
+    <div class="sub_background">
+        <div class="frame">
+            <!-- 店舗名,画像-->
+            <a class="tenpomei">店舗名</a>
+            <div class="name">
+                <a class="namekana"><?php echo $shop_name_rubi ?></a>
+                <a class="name"><?php echo $shop_name ?></a>
             </div>
-            <a class="store_confirm_text">タグ</a>
+            <a class="img">店舗画像</a>
+            <img class="img" src="./img/Frame%2089.png">
+            <!-- <img src="data:<?php echo $row['ext'] ?>;base64,<?php echo $shop_image; ?>">-->
+            <!-- 住所-->
+            <a class="jyuusyo">住所</a>
+            <a class="add"><?php echo $shop_address ?></a>
+            <!--　評価-->
+            <form action="reg_insert.php" method="post" id="reg">
+                <div class="evaluation_group">
+                <div class="star">
+                    <a class="list">評価</a><br>
+                    <a class="evaluation_text_1">入りやすさ</a><br>
+                    <div class="evaluation">
+                        <?php
+                        echo '<p><span class="star5_rating" data-rate="',$_POST['app'],'"></span></p>';//data-rateの中を変数に
+                        echo '<input type="hidden" name="appearance" value="',$_POST['app'],'">';//valueを変数に
+                        ?>
+                    </div>
+                    <a class="evaluation_text_2">味</a><br>
+                    <div class="evaluation">
+                        <?php
+                        echo '<p><span class="star5_rating" data-rate="',$_POST['taste'],'"></span></p>';//data-rateの中を変数に
+                        echo '<input type="hidden" name="taste" value="',$_POST['taste'],'">';//valueを変数に
+                        ?>
+                    </div>
+                    <a class="evaluation_text_3">雰囲気</a><br>
+                    <div class="evaluation">
+                        <?php
+                        echo '<p><span class="star5_rating" data-rate="',$_POST['atmo'],'"></span></p>';//data-rateの中を変数に
+                        echo '<input type="hidden" name="atmosphere" value="',$_POST['atmo'],'">';//valueを変数に
+                        ?>
+                    </div>
+                </div>
+                </div>
+                <input type="hidden" name="shop_name" value="<?php  echo $shop_name; ?>">
+                <input type="hidden" name="shop_name_rubi" value="<?php  echo $shop_name_rubi; ?>">
+                <input type="hidden" name="shop_image" value="<?php  echo $shop_image; ?>">
+                <input type="hidden" name="lat" value="<?php  echo $lat; ?>">
+                <input type="hidden" name="lon" value="<?php  echo $lon; ?>">
+                <input type="hidden" name="shop_address" value="<?php  echo $shop_address; ?>">
+                <?php for($i=0;$i<$cnt;$i++){?>
+                <input type="hidden" name="tag_id[]" value="<?php  echo $tag_id[$i]; ?>">
+                <?php } ?>
+                <input type="hidden" name="shop_explanation" value="<?php  echo $shop_explanation; ?>">
+
+
+            </form>
+            <!-- タグ-->
+                <a class="tag">タグ</a>
             <div class="tag">
-               <?php
-		require("../conect.php");
-        $max = count($_POST['tagId']);
-                for($i=0; $i<$max; $i++){ 
-                    $tagsid = $_POST['tagId'][$i];
-            $tags = $pdo->prepare('SELECT * FROM m_tag WHERE tag_id = :tag');
-            $tags -> bindValue(':tag',$_POST['tagId'][$i]);
-            $tags -> execute();
-            foreach($tags as $tag){
-		if($i%3==0&&$i!=0){
-            
-			echo '<button type="button" class="tag_button" name="tagId[]" value="',$tagsid,'"><font size="5">',$tag['tag_name'],'</font></button><br>';
-		}else{
-			echo '<button type="button" class="tag_button" name="tagId[]" value="',$tagsid,'"><font size="5">',$tag['tag_name'],'</font></button>';
-		}
-    }
-    }
-    ?>
+                <?php for($i=0;$i<$cnt;$i++){?>
+                    <button type="submit" class="tag_button" formaction="(URL 一覧)" form="(フォームID)"><?php  echo $tag_name[$i]; ?></button>
+                <?php } ?>
             </div>
-            <a class="store_confirm_text">コメント</a><br>
-            <?php
-              echo'<textarea class="store_textarea" name="commemt">',$_POST['shopComment'],'</textarea><br>';
-            ?>
-            <button type="submit"  class="post_button" value="send">投稿する</button>
-        </form>
+            <!-- コメント-->
+            <a class="com">コメント</a>
+            <textarea class="text"><?php echo $shop_explanation?></textarea><br>
+            <!-- 確認ボタン-->
+            <div class="btn">
+                <button type="submit" class="confirm" form="reg">投稿する</button>
+            </div>
+        </div>
     </div>
 </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="./js/postconfirm.js"></script>
 </body>
-</html></em>
+</html>
