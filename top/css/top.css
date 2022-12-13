@@ -1,29 +1,37 @@
+body {
+    margin: auto;
+    background-size: cover;
+    background-image: url("../img/background.png");
+    background-repeat: no-repeat;
+    background-color: rgba(36,36,36,0.8);
+}
 .title_banner_top{
     text-align: center;
 }
 .top-title {
     color: #ffeeee;
-    font-size: 36px;
+    font-size: 9vw;
 }
 .top-content {
     margin: auto;
     text-align: center;
     background-color:rgba(255,255,255,0.8);
     width: 90%;
-    margin-bottom: 30px;
+    margin-bottom: 8vw;
 }
+
 .search {
     background-color: #FFFFFF;
     border-bottom: solid;
     border-width: thin;
 }
 .search-text{
-    font-size: 32px;
+    font-size: 8vw;
     color: #FF5D39;
 }
 .search-pin {
     color: #FFFFFF;
-    font-size: 40px;
+    font-size: 10.8vw;
 }
 .search-img{
     float: right;
@@ -44,20 +52,20 @@
     width: 30%;
 }
 .search-name {
-    font-size: 40px;
+    font-size: 10.7vw;
     color: #D45D87;
 }
 .search-tag {
-    font-size: 40px;
+    font-size: 10.7vw;
     color: #E6855E;
 }
 .search-map {
-    font-size: 40px;
+    font-size: 10.7vw;
     color: #F9DB57;
 }
 .Top-Store-Button {
-    margin-left: 50px;
-    font-size: 40px;
+    margin-left: 14vw;
+    font-size: 10vw;
     color: #FFFFFF;
     
     background-color: #E3750F;
@@ -68,12 +76,12 @@
     cursor: pointer;
     font-size:1rem;
     font-weight: normal;
-    padding: 3% 3% 3% 50px;
+    padding: 3% 3% 3% 15.5vw;
     transition: all .5s ease;
     width: 100%;
 }
 .accordion-space {
-    height: 30px;
+    height: 8vw;
     border-top: solid;
     border-bottom: solid;
     border-width: thin;
@@ -83,7 +91,7 @@
     display: inline-block;
     position: absolute;
     top: 45%;
-    right: 30px;
+    right: 8vw;
     width: 10px;
     height: 10px;
     border-right: 3px solid #4F4F4F;
@@ -102,4 +110,21 @@
     border-width: thin;
     display: none;
     padding: 2em 1em;
+}
+
+.box input{
+    position: relative;
+    top: -1vw;
+    width: 70vw;
+    height: 9vw;
+    font-size: 5vw;
+}
+
+.box button{
+    position: relative;
+    background-color: #E3750F;
+    top: 4vw; 
+    width: 30vw;
+    height: 10vw;
+    font-size: 7vw;
 }
