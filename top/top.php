@@ -2,6 +2,21 @@
     session_start();
     // セッション情報の保存
 
+$pdo = new PDO(
+    'mysql:host=mysql207.phy.lolipop.lan;
+    dbname=LAA1290570-gohunt;charaset=utf8',
+    'LAA1290570',
+    'gohunt');
+
+$stmt=$pdo->prepare("SELECT * FROM m_tag");
+$stmt->execute();
+
+foreach ($stmt as $row){
+    $tag_name[]=$row['tag_name'];
+    $tag_id[]=$row['tag_id'];
+}
+$cnt=count($tag_id);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +27,7 @@
 
   <link rel="stylesheet" type="text/css" href="./css/top.css">
   <?php require("../header/menu.php"); ?>
+</head>
 <div class="ttop">
   <div class="title_banner_top">
   <a class="top-title">～お店の検索～</a>
@@ -34,9 +50,9 @@
     <div class="accordion-box column">
       <a class="accordion"></a>
       <div class="box">
-        <form action="../regList/searchresult.php" method="get">
+        <form action="../regList/searchresult.php" method="get" id="name">
           <input type="text" name="keyword" placeholder="”店舗名”を入力"><br>
-          <button type="submit" >検索</button>
+          <button type="submit" name="name_search" form="name" >検索</button>
         </form>
       </div>
     </div>
@@ -56,7 +72,12 @@
     <div class="accordion-box column">
       <a class="accordion"></a>
       <div class="box">
-        機能はここに
+          <form action="../regList/searchresult.php" method="get" id="tag">
+              <?php for($i=0;$i<$cnt;$i++){?>
+                  <input type="radio" class="tag_button" name="tag_id" value="<?php echo $tag_id[$i]; ?>"><?php  echo $tag_name[$i]; ?></input>
+              <?php } ?>
+              <button type="submit" name="tag_search" form="tag">検索</button>
+          </form>
       </div>
     </div>
     <!-- 地図検索 -->
