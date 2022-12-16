@@ -3,7 +3,7 @@
 body{
     margin: auto;
     background-size: cover;
-    background-image: url("../../Reg_confirm/img/background.png");
+    background-image: url("../img/background.png");
     background-color: rgba(36,36,36,0.8);
     background-repeat: no-repeat;
 }
