@@ -1,13 +1,17 @@
 <?php
-try {
-    $db = new PDO('mysql:host=mysql207.phy.lolipop.lan;
-dbname=LAA1290637-aso2001028;charaset=utf8',
-        'LAA1290637',
-        'syun0612');
-}   catch (PDOException $e) {
-    echo "データベース接続エラー :".$e->getMessage();
-}
 session_start();
+try {
+    $pdo = new PDO('mysql:host=mysql207.phy.lolipop.lan;
+  dbname=LAA1290570-gohunt;charaset=utf8',
+  'LAA1290570',
+  'gohunt');
+}   catch (PDOException $e) {
+    echo "データベース接続エラー：".$e->getMessage();
+}
+$sql = $pdo->prepare('select * from m_user where user_id='.$_SESSION['user_id'].'');
+$sql->execute();
+$result = $sql->fetch(PDO::FETCH_ASSOC);
+$pdo=null;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -16,7 +20,15 @@ session_start();
     <title>マイページ</title>
     <link rel="stylesheet" href="css/mypage.css">
     <meta name="viewport" content="width=device-width,initial-scale-1">
-<?php require("../header/menu.php"); ?>
+</head>
+<body>
+    <div class="gohant">
+         <img src="img/cooltext421301192687833 1-1.png">
+    </div>
+    <div class="hamburger-menu">
+        <input type="checkbox" id="menu-btn-check">
+        <label for="menu-btn-check" class="menu-btn"><span></span></label>
+    </div>
     <div style="background-color:#505050;">
         <div class="mypage">
            <img src="img/cooltext421486115691405 1.png">
@@ -25,16 +37,22 @@ session_start();
         <form action="" method="post">
             <div class="box">
                 <p>ユーザーID</p>
-                <?php echo htmlspecialchars($_POST['user_id']);?>
+                <?php
+                    echo $result['user_id'];
+                ?>
                 <hr width="300px">
                 <div class="margin">
                     <p>ユーザー名</p>
-                    <?php echo htmlspecialchars($_SESSION['user_name']);?>
+                <?php
+                    echo $result['user_name'];
+                ?>
                 </div>
                 <hr width="300px">
                 <div class="margin">
                     <p>メールアドレス</p>
-                    <?php echo htmlspecialchars($_SESSION['user_mail']);?>
+                <?php
+                    echo $result['user_mail'];
+                ?>
                 </div>
                 <hr width="300px">
                 <div class="hoge_button">
