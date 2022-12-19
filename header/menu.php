@@ -13,7 +13,7 @@
 </div>
 <!-- nav-right -->
 <main>
-    <a href="top.php">
+    <a href="../top/top.php">
         <img src="../header/img/titlelogo.png" class="titlelogo">
     </a>
     <nav>
