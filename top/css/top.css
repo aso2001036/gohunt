@@ -34,7 +34,9 @@ body {
     font-size: 10.8vw;
 }
 .search-img{
+    position: relative;
     float: right;
+    top: 2vw;
 }
 .search_navi-name {
     background-color: #EAA8BF;
@@ -127,4 +129,5 @@ body {
     width: 30vw;
     height: 10vw;
     font-size: 7vw;
+    color: #fff;
 }
