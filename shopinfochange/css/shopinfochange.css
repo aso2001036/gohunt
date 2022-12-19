@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-image: url("../img/background.png");
+    height: 1300px;
+    background-color: rgba(36,36,36,0.8);
+}
+.detail_image{
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    margin-bottom: 5px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 15%;
+}
+.back{
+    padding-left: 5px;
+    color: #FFFFFF;
+    font-size: 30px;
+    max-width: 97%;
+}
+.store_detail_title{
+    width: 100%;
+    margin-top: 30%;
+    font-size: 36px;
+    border: none;
+    background-color:transparent;
+    color: #FFFFFF;
+}
+.detail_content{
+    margin: auto;
+    background-color: #FFFFFF;
+    border: solid 2px #333333;
+    border-radius: 0.75em;
+    width: 90%;
+    padding: 5px;
+}
+.store_detail_list{
+    font-size: 28px;
+}
+.map_area{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: #fafafa;
+    border: solid;
+    border-radius: 10px;
+}
+/* 評価 */
+.evaluation{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+.evaluation input[type='radio']{
+    display: none;
+}
+.evaluation label{
+    position: relative;
+    padding: 10px 10px 0;
+    color: gray;
+    cursor: pointer;
+    font-size: 40px;
+}
+.evaluation label .text{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: gray;
+}
+.evaluation label:hover,
+.evaluation label:hover ~ label,
+.evaluation input[type='radio']:checked ~ label{
+    color: #ffcc00;
+}
+.average_star {
+    font-size: 36px;
+    color: #ffcc00;
+}
+.average {
+    font-size: 36px;
+}
+.evaluation_text{
+    font-size: 20px;
+    padding-left: 15px;
+}
+.evaluation_button {
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 110px;
+}
+/*アコーディオンタイトル*/
+.accordion {
+    position: relative;/*+マークの位置基準とするためrelative指定*/
+    cursor: pointer;
+    font-size:1rem;
+    font-weight: normal;
+    padding: 3% 3% 3% 50px;
+    transition: all .5s ease;
+    width: 100%;
+}
+.accordion-space {
+    height: 30px;
+    border-top: solid;
+    border-bottom: solid;
+    border-width: thin;
+}
+.accordion:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 45%;
+    right: 30px;
+    width: 10px;
+    height: 10px;
+    border-right: 3px solid #4F4F4F;
+    border-bottom: 3px solid #4F4F4F;
+    transform: translateY(-50%) rotate(45deg);
+    transition: .3s;
+}
+
+/*　closeというクラスがついたら形状変化　*/
+.accordion.close::after{
+    transform: rotate(225deg);
+}
+/*アコーディオンで現れるエリア*/
+.box {
+    border-top: solid;
+    border-width: thin;
+    display: none;
+    padding: 2em 1em;
+}
+.tag_button{
+    box-sizing: border-box;
+    width: 101px;
+    height: 32px;
+    left: 15px;
+    top: 31px;
+    font-size: 24px;
+    color: #FFFFFF;
+    background: #E3750F;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+.text_area {
+    width: 98%;
+    height: 211px;
+}
+.edit_button {
+    margin-left: 65px;
+    margin-bottom: 10px;
+    width: 60%;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #E3750F;
+    color: #FFFFFF;
+    font-size: 40px;
+    border-radius: 15px;
+}
+.logo {
+    font-size: 48px;
+    font-family: "AR BERKLEY";
+    color: #ffeeee;
+}
+.title_banner {
+    width: 100%;
+    background: rgba(36,36,36,1);
+    height: 60px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.title_page {
+    color: #ffeeee;
+    font-size: 40px;
+}
+.content{
+    margin: auto;
+    background-color: #FFFFFF;
+    border: solid 2px #333333;
+    border-radius: 0.75em;
+    width: 90%;
+    height: 60%;
+}
+.footer{
+
+}
